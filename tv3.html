@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<!-- BACKUP URL: https://your-github-pages-url-here -->
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EspressoCup — TV 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+
+/* ── Task 2.1: CSS custom properties ─────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap');
+
+:root {
+  --bg:           #1a1008;
+  --surface:      #2a1f14;
+  --panel:        #2f2318;
+  --border:       #3d2e1e;
+  --gold:         #c8972a;
+  --goldLight:    #e2b84a;
+  --cream:        #f5e6c8;
+  --text:         #d4c4a0;
+  --muted:        #8a7560;
+  --fs-item-name:      3.3vw;
+  --fs-item-note:      2.2vw;
+  --fs-price:          3.3vw;
+  --fs-hdr-title:      6.8vw;
+  --fs-hdr-sub:        2vw;
+  --fs-badge-star:     1.8vw;
+  --fs-badge-new:      1.3vw;
+  --fs-badge-featured:  1.8vw;
+  --fs-badge-campaign:  1.8vw;
+  --fs-page-date:       1.2vw;
+  --fs-info-story:      4vw;
+  --fs-info-social:     3vw;
+}
+
+/* ── Task 2.2: Reset & base ───────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Font-stack fallbacks (FR-65) — used when Google Fonts is unavailable */
+body {
+  font-family: 'Inter', Arial, 'Helvetica Neue', sans-serif;
+  color: var(--text);
+}
+
+.playfair {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* ── Task 2.3: Top bar ────────────────────────────────────────────────────── */
+.tb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6.5vh;
+  padding: 0 2vw;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.tb-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.5vw;
+  font-weight: 700;
+  color: var(--goldLight);
+  letter-spacing: 0.02em;
+}
+
+.tb-title {
+  flex: 1;
+  text-align: center;
+  font-size: 1.8vw;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tb-right {
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
+}
+
+.tv-tag {
+  font-size: 1.3vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 0.25em 0.7em;
+  border-radius: 2px;
+}
+
+/* ── v3.0: Left brand strip ───────────────────────────────────────────────── */
+.lp {
+  position: relative;
+  width: 10vw;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Vertical brand accent text — "JUST ESPRESSO" filling the full strip height */
+.lp-brand {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 8vw;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2vw;
+  color: var(--gold);
+  opacity: 0.25;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── v3.0: Right panel & header ───────────────────────────────────────────── */
+.rp {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2.0vh 3.5vw;
+  overflow: hidden;
+}
+
+/* Right panel header — label, title, subtitle, date */
+.rh {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.0vh;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.0vh;
+}
+
+.rh-label {
+  font-size: 2.0vw;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.rh-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: var(--fs-hdr-title);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.0;
+  margin: 0.3vh 0;
+}
+
+.rh-sub {
+  font-size: var(--fs-hdr-sub);
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.rh-date {
+  font-size: 1.0vw;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.8vh;
+}
+
+.page-date {
+  text-align: right;
+  font-size: var(--fs-page-date);
+  color: var(--muted);
+  font-style: italic;
+  padding-top: 1.2vh;
+}
+
+/* Size header rows */
+.sh3, .sh2, .sh1 {
+  display: grid;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.8vh;
+  margin-bottom: 1.2vh;
+  font-size: 1.5vw;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sh3 { grid-template-columns: 3fr 1fr 1fr 1fr; }
+.sh2 { grid-template-columns: 3fr 1fr 1fr; }
+.sh1 { grid-template-columns: 3fr 1fr; }
+
+/* Price-column header spans centered over their price column */
+.sh3 span:not(:first-child),
+.sh2 span:not(:first-child) { text-align: center; }
+/* Single-price column: right-align to match .ip.r prices */
+.sh1 span:not(:first-child) { text-align: right; }
+
+/* Item column container — single column in v3.0 */
+.ig {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.ic {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Task 2.6: Item row styles ────────────────────────────────────────────── */
+.r3, .r2, .r1 {
+  display: grid;
+  align-items: center;
+  padding: 0.45vh 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+}
+
+.r3 { grid-template-columns: 3fr 1fr 1fr 1fr; }
+.r2 { grid-template-columns: 3fr 1fr 1fr; }
+.r1 { grid-template-columns: 3fr 1fr; }
+
+/* Name+note wrapper cell — keeps both on same grid column */
+.in-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  padding-right: 0.4vw;
+}
+
+.in {
+  font-size: var(--fs-item-name);
+  color: var(--cream);
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inn {
+  display: block;
+  font-size: var(--fs-item-note);
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ip {
+  font-size: var(--fs-price);
+  font-weight: 600;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.ip.np { color: color-mix(in srgb, var(--muted) 60%, transparent); }
+.ip.r  { text-align: right; }
+
+/* Grid price cells centered under their S/M/L column header */
+.r3 .ip, .r2 .ip { text-align: center; }
+
+/* ── Task 2.7: Badge styles ───────────────────────────────────────────────── */
+/* Cold star — visible without colour via superscript position (FR-16) */
+.best::after {
+  content: '★';
+  font-size: var(--fs-badge-star);
+  color: var(--gold);
+  margin-left: 8px;
+  vertical-align: super;
+}
+
+/* NEW pill — amber background + uppercase text for colour-independent ID */
+.new-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: var(--fs-badge-new);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.1em 0.6em;
+  border-radius: 2px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ── v3.0: Spacious template ──────────────────────────────────────────────── */
+.sg {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Flexbox: name+desc group left, price right */
+.si {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  padding: 2.5vh 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Left group wrapping name + optional desc */
+.si-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.si-n {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: var(--fs-item-name);
+  font-style: italic;
+  color: var(--cream);
+}
+
+.si-d {
+  font-size: var(--fs-item-note);
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.si-p {
+  flex-shrink: 0;
+  font-size: var(--fs-price);
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ── v3.0: Featured-single ────────────────────────────────────────────────── */
+.fs-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 4vh 6vw;
+  text-align: center;
+  gap: 2.5vh;
+}
+
+/* Gradient placeholder when no image is uploaded */
+.fs-img-ph {
+  width: 55vw;
+  height: 42vh;
+  background: linear-gradient(135deg, var(--panel), color-mix(in srgb, var(--border) 40%, var(--panel)));
+  border-radius: 8px;
+}
+
+.fs-img-el {
+  max-width: 55vw;
+  max-height: 45vh;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.fs-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 5.5vw;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.fs-note {
+  font-size: 1.4vw;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 50vw;
+}
+
+.fs-price {
+  font-size: 3.8vw;
+  font-weight: 700;
+  color: var(--goldLight);
+  letter-spacing: 0.03em;
+}
+
+/* Signature badge — shown when item.isFeatured === true on featured-single */
+.fb-tag {
+  position: absolute;
+  top: 2vh;
+  right: 0;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: var(--fs-badge-featured);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.4em 1.2em;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Campaign badge — shown when item.isCampaign === true on featured-single */
+.fb-campaign-tag {
+  position: absolute;
+  top: 2vh;
+  left: 0;
+  background: #c0392b;
+  color: #fff;
+  font-size: var(--fs-badge-campaign);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.4em 1.2em;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── v3.0: Featured-quad ──────────────────────────────────────────────────── */
+.fq-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 3vh 4vw;
+  gap: 2vh;
+}
+
+.fq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5vw;
+  flex: 1;
+}
+
+.fq-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Image area — fixed aspect ratio placeholder */
+.fq-img-ph {
+  flex: 1;
+  min-height: 22vh;
+  background: linear-gradient(135deg, var(--panel), color-mix(in srgb, var(--border) 50%, var(--panel)));
+}
+
+.fq-img-el {
+  width: 100%;
+  height: 26vh;
+  object-fit: cover;
+}
+
+.fq-info {
+  padding: 1.2vh 1.5vw 1.5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+
+.fq-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8vw;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.2;
+}
+
+.fq-price {
+  font-size: 2.8vw;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ── Task 2.11: Addon-cards ───────────────────────────────────────────────── */
+/* Single-column vertical list — each card is a horizontal row on portrait TV */
+.addon-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vh;
+  flex: 1;
+  justify-content: center;
+}
+
+.ac {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3vw;
+  padding: 2.8vh 2.5vw;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+}
+
+.ac-icon {
+  font-size: 3.5vw;
+  flex-shrink: 0;
+  width: 5vw;
+  text-align: center;
+}
+
+.ac-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ac-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8vw;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 0.5vh;
+}
+
+.ac-desc {
+  font-size: 1.5vw;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.ac-price {
+  font-size: 4.0vw;
+  font-weight: 700;
+  color: var(--goldLight);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ── Task 2.12: Info-QR ───────────────────────────────────────────────────── */
+.info-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3vh;
+  flex: 1;
+  padding: 3.5vh 4vw;
+}
+
+.info-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2vh;
+  max-width: 72vw;
+}
+
+.info-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 6.5vw;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.info-tag {
+  font-size: 1.8vw;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.info-story {
+  font-size: var(--fs-info-story);
+  color: var(--text);
+  line-height: 1.85;
+}
+
+.info-social {
+  font-size: var(--fs-info-social);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.info-div {
+  width: 50vw;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+.info-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5vh;
+}
+
+/* Decorative QR grid — 10-column white grid */
+.qrb {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  width: 22vw;
+  height: 22vw;
+}
+
+.qrb div {
+  background: #1a1008;
+  border-radius: 1px;
+}
+
+/* Real QR image — replaces decorative grid when branding.qrImage is set */
+.qr-img {
+  width: 22vw;
+  height: 22vw;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.qr-cap {
+  font-size: 1.5vw;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* ── Task 2.13: Slideshow runtime ─────────────────────────────────────────── */
+/* Slideshow container — starts below the top bar (6.5vh) so .tb stays visible */
+.ss {
+  position: fixed;
+  top: 6.5vh;
+  left: 0; right: 0;
+  bottom: 46px;
+}
+
+/* Individual slides — stacked, hidden by default */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.75s ease-in-out;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Progress bar */
+.pb {
+  position: fixed;
+  bottom: 46px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--gold);
+  transition: none;
+  z-index: 10;
+}
+
+/* Navigation bar */
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--surface);
+  z-index: 10;
+}
+
+/* Navigation dots */
+.nd {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.nd.active {
+  background: var(--gold);
+  transform: scale(1.5);
+  box-shadow: 0 0 6px 2px color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* ── Task 2.14: Pause icon & Coming Soon ─────────────────────────────────── */
+@keyframes fade-out-pause {
+  0%   { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.pause-icon {
+  position: absolute;
+  top: 1.5vh;
+  right: 1.5vw;
+  font-size: 1.4vw;
+  color: var(--gold);
+  pointer-events: none;
+  animation: fade-out-pause 2.5s ease-out forwards;
+  z-index: 20;
+}
+
+.coming-soon-row {
+  padding: 0.7vh 0;
+  font-size: 2.0vw;
+  font-style: italic;
+  color: var(--muted);
+  border-bottom: 1px dashed color-mix(in srgb, var(--border) 60%, transparent);
+  opacity: 0.55;
+}
+
+/* ── v3.0: Fullscreen tap-to-start overlay (FR-78) ───────────────────────── */
+#fs-prompt {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3vh;
+}
+
+.fs-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 5vw;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.fs-hint {
+  font-size: 1.2vw;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+/* ── v3.0: Warning bar — info-qr slide (FR-80) ───────────────────────────── */
+.warning-bar {
+  position: fixed;
+  bottom: 46px;
+  left: 0;
+  right: 0;
+  height: 9vh;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-top: 2px solid var(--gold);
+}
+
+.warning-main {
+  font-size: 2.2vw;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.warning-sub {
+  font-size: 1.7vw;
+  color: var(--muted);
+  margin-top: 0.4vh;
+}
+
+  </style>
+</head>
+<body>
+<div class="tb">
+  <div class="tb-logo">EspressoCup</div>
+  <div class="tb-title">Her yudumda bir hikaye</div>
+  <div class="tb-right"><span class="tv-tag">TV 3</span></div>
+</div>
+<div class="ss">
+<div class="slide">
+
+<div style="display:flex;flex:1;overflow:hidden;">
+  <div class="lp">
+    <div class="lp-brand">JUST ESPRESSO</div>
+  </div>
+  <div class="rp">
+    <div class="rh">
+      <div class="rh-label">WHOLE BEAN & ACCESSORIES</div>
+      <div class="rh-title">Kiloluk Kahveler</div>
+      <div class="rh-sub">Premium çekirdek kahvelerimizi evinize götürün</div>
+    </div>
+    <div class="ig">
+      <div class="ic">
+        <div class="sh1"><span></span><span>Fiyat</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Brasilia Sarı Paket</span><span class="inn">1 kg</span></div><span class="ip r">1800</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Brasilia Sarı Paket</span><span class="inn">500 gr</span></div><span class="ip r">900</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Veronessi Kırmızı Paket</span><span class="inn">1 kg</span></div><span class="ip r">1500</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Veronessi Kırmızı Paket</span><span class="inn">500 gr</span></div><span class="ip r">750</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Türk Kahvesi</span><span class="inn">1 kg</span></div><span class="ip r">800</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Menengiç</span><span class="inn">1 kg</span></div><span class="ip r">800</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Dibek</span><span class="inn">1 kg</span></div><span class="ip r">800</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Termos</span><span class="inn">900 ml</span></div><span class="ip r">1500</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Termos</span><span class="inn">350 ml</span></div><span class="ip r">1000</span></div>
+        
+      </div>
+    </div>
+    <div class="page-date">Fiyatlar: 14.06.2026</div>
+  </div>
+</div>
+</div>
+<div class="slide">
+
+<div class="info-wrap">
+  <div class="info-brand">
+    <div class="info-logo">EspressoCup</div>
+    <div class="info-tag">Her yudumda bir hikaye</div>
+    <div class="info-story">EspressoCup olarak, her fincanı özenle hazırlıyor ve misafirlerimize en iyi kahve deneyimini sunmayı hedefliyoruz. Özenle seçilmiş çekirdeklerimiz ve uzman baristalarımızla sizlere unutulmaz bir kahve deneyimi yaşatıyoruz.</div>
+    <div class="info-social">@espressocupcoffee</div>
+    <div class="info-social"></div>
+  </div>
+  <div class="info-div"></div>
+  <div class="info-qr">
+    <!-- DECORATIVE QR PLACEHOLDER — replace with actual QR code image when ready -->
+    <img class="qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABHsAAAR7CAIAAACfMz+5AAAABmJLR0QA/wD/AP+gvaeTAAAeIUlEQVR4nOzbgW3juhJA0fDDHaWAFJU6tigXkJr4G9A+BMleyWOfUwB3QJGKL4Rde+83AAAAAv+7egAAAICnpbgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgcrt6gJ9ba109Ary9vb3tva8e4RG5oU8mPedOy/m8uA6lR3HunruhPIi5l8g3LgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKjcrh4A4LHsvbvF11rd4ql08rl7nk6emrstcycHXpbi+qv39/ePj4+rp+C37vf719fX1VMAAMf84noOfnH9B8X1Vx8fH3/+/Ll6Cn7r8/PT/QeAh+UX13Pwi+s/+H9cAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUA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gIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACorL331TM8orVWt/jcPU+3JWXPD6XbYvJDJucVzP1jkZp7/VO2he+b+5fINy4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACo3K4eAM6w1rp6hB/ae189wiOa+0BT6WlJ93zuObct55t7zue+uObu+Vyu/5PxjQsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqa+999Qw/tNbqFk+3Ze7kHEofKIfc0EOO4iFvxUNOy5OZ+26Ze0Pnbsvc6z/3tPjGBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAAJXb1QP83N67W3yt1S2eTj5XuucpD5Tv824539x3S8ppeTLO+SHbcj7vlkO+cQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBl7b2vnuERrbWuHoF/KT3n6Wkx+aG5N3Tutpj8fHPP+VxOy5OZ++JKzT3nc/nGBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAAJXb1QO8or13t/haq1t87uS25VA6eWrunnM+l+jQ3Mnn3tC5k8995br+57Pnh3zjAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgMrae189ww+ttbrF527LXB4o/NLcS5ROzvmcFh6Eo/hk5v6c840LAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKmvvffUML2et1S3ugR6y54fSbeF86VF0Wg7Nvf5zeZ8fmrstc98ttuXQ3EuU8o0LAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKmvvffUMP7TWunqEH5q755xv7jlPuUTncxSfjEt0KD3nc/fc9edBzL1EvnEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABA5Xb1AA9q790tvtbqFp87Oeebe1rmHsV0zzlkzw/NvUSpuW/FlG05nxfXk/GNCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACq3qwd4RXvvbvG1Vre4yZ9Muuecb+4DnftuSaXbMnfPTX4+23K+uXs+d/KUb1wAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQuV09wCtaa109wsux509m790tnp6WdHHbcr50z1Nz93zuJUrN3RaTHzL5k/GNCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACq3qwd4RXvvbvG11tDF021J2ZZDjuKhdPK55p7zueaec6flfF5c53OJnoxvXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFC5XT0A/9je++oRHtFaq1s83fO5kzuKh2zL+eZeotTcbTE53zd3zx3FQ3Nfub5xAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQGXtva+eAfirtVa3eHr9TX7IK/fQ3D1PJ+eQB3rIu+WQd8uTmXvOfeMCAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAyu3qAX5urXX1CPD29va29x66OOfz4uL70uvvKPJ96WnxZ+7JeKCHfOMCAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAyu3qAYD/stbqFt97d4un5m5LOnnKthyyLeezLeeb+8ci5SjyfYrrr97f3z8+Pq6egt+63+9fX19XTwEAwItSXH/18fHx58+fq6fgtz4/PxUXAABX8f+4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKCiuAAAACqKCwAAoKK4AAAAKooLAACgorgAAAAqigsAAKByu3qAV7TWunqER7T3vnoE/iUPlO+be1rS97ltOWRbzl+c86Xn3Gk5n29cAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAULldPQDAC9l7d4uvtYYuPlf6QFNzH+jcyedef+f8fHMf6NzJU75xAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQOV29QAA/Bt776tH4F9aa3WLp6fF5Ocvnpo7+dzTMpe/RId84wIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAICK4gIAAKgoLgAAgIriAgAAqCguAACAiuICAACoKC4AAIDK7eoBXtHe++oRGCM9LWutbvGUbTnf3D33yj0095w7LYdsy6G555wn4xsXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFRuVw/wuO73++fn59VT8Fv3+/3qEQAAeF1r7331DD+01rp6BHh7e3tzic6X7vncbUnN3XM3lO9zWg7Zlicz94HO5RsXPDR/Lc43Ny3msufnm/uTK32gc0+LS3Ro7raY/Mn4f1wAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQUVwAAAAVxQUAAFBRXAAAABXFBQAAUFFcAAAAFcUFAABQWXvvq2cAAAB4Tr5xAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBQXAABARXEBAABUFBcAAEBFcQEAAFQUFwAAQEVxAQAAVBTX/9uvYwEAAACAQf7Wo9hXFgEAAFyMCwAA4GJcAAAAF+MCAAC4GBcAAMDFuAAAAC7GBQAAcDEuAACAi3EBAABcjAsAAOBiXAAAABfjAgAAuBgXAADAxbgAAAAuxgUAAHAxLgAAgItxAQAAXIwLAADgEqAzV4N+G8leAAAAAElFTkSuQmCC" alt="QR code" />
+    <div class="qr-cap">Bizi takip edin</div>
+  </div>
+</div>
+
+<div class="warning-bar">
+  <span class="warning-main">ÇALINAN VE KAYBOLAN EŞYALARINIZDAN ŞİRKETİMİZ SORUMLU DEĞİLDİR</span>
+  <span class="warning-sub">Kesinlikle dışarıdan ürün getirmek yasaktır</span>
+</div>
+</div>
+</div>
+<div id="fs-prompt">
+  <div class="fs-title">EspressoCup</div>
+  <div class="fs-hint">Ekrana dokunun / Başlatmak için OK'a basın</div>
+</div>
+<div class="pb"></div>
+<nav class="nav">
+  <div class="nd"></div>
+  <div class="nd"></div>
+</nav>
+<script>
+
+/* ── v3.0: Auto-fullscreen (FR-78) ──────────────────────────────────────── */
+(function () {
+  var fsPrompt = document.getElementById('fs-prompt');
+
+  /* Always show the overlay — slideshow only starts after the user interacts */
+  document.addEventListener('DOMContentLoaded', function () {
+    if (fsPrompt) fsPrompt.style.display = 'flex';
+    /* Attempt fullscreen early; most browsers require a user gesture so this
+       may be silently ignored — the click handler below will retry. */
+    document.documentElement.requestFullscreen().catch(function () {});
+  });
+
+  /* First click/OK-press: enter fullscreen, hide overlay, start slideshow */
+  document.addEventListener('click', function onFirstClick() {
+    document.removeEventListener('click', onFirstClick);
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(function () {});
+    }
+    if (fsPrompt) fsPrompt.style.display = 'none';
+    window.dispatchEvent(new Event('espresso:start'));
+  }, { once: true });
+}());
+
+/* ── EspressoCup Slideshow Runtime ──────────────────────────────────────── */
+(function () {
+  /* Task 2.15: dwell times embedded as a JS constant (converted to ms) */
+  var DURATIONS = [10000,10000];
+
+  var slides       = Array.from(document.querySelectorAll('.slide'));
+  var dots         = Array.from(document.querySelectorAll('.nd'));
+  var pb           = document.querySelector('.pb');
+  var ss           = document.querySelector('.ss');
+
+  var current        = 0;
+  var paused         = false;
+  var started        = false;  /* true after first user interaction           */
+  var rafId          = null;
+  var progressStart  = null;  /* performance.now() at last resume            */
+  var progressOffset = 0;     /* ms already elapsed before the last resume   */
+
+  /* ── Helpers ─────────────────────────────────────────────────────────── */
+
+  function getDuration() {
+    return DURATIONS[current] || 12000;
+  }
+
+  function getElapsed() {
+    if (progressStart === null) return progressOffset;
+    return progressOffset + (performance.now() - progressStart);
+  }
+
+  /* ── Task 2.15: goTo ─────────────────────────────────────────────────── */
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    if (dots[current]) dots[current].classList.remove('active');
+
+    current = ((n % slides.length) + slides.length) % slides.length;
+
+    slides[current].classList.add('active');
+    if (dots[current]) dots[current].classList.add('active');
+
+    if (!paused && started) {
+      startProgress();
+    } else {
+      /* Navigating while paused — reset bar to 0 but stay paused */
+      progressOffset = 0;
+      progressStart  = null;
+      if (pb) pb.style.width = '0%';
+    }
+  }
+
+  /* ── Task 2.15: startProgress — RAF progress bar loop ───────────────── */
+  function startProgress() {
+    cancelAnimationFrame(rafId);
+    progressOffset = 0;
+    progressStart  = performance.now();
+    if (pb) pb.style.width = '0%';
+    tick();
+  }
+
+  function tick() {
+    var elapsed  = getElapsed();
+    var duration = getDuration();
+    var pct      = Math.min((elapsed / duration) * 100, 100);
+
+    if (pb) pb.style.width = pct + '%';
+
+    if (elapsed >= duration) {
+      goTo(current + 1);
+      return;
+    }
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  /* ── Task 2.15: togglePause ──────────────────────────────────────────── */
+  function togglePause() {
+    if (paused) {
+      paused        = false;
+      progressStart = performance.now();
+      hidePauseIcon();
+      tick();
+    } else {
+      paused         = true;
+      progressOffset = getElapsed();
+      progressStart  = null;
+      cancelAnimationFrame(rafId);
+      showPauseIcon();
+    }
+  }
+
+  /* ── Task 2.15: pause icon ───────────────────────────────────────────── */
+  function showPauseIcon() {
+    hidePauseIcon();
+    var icon       = document.createElement('div');
+    icon.className = 'pause-icon';
+    icon.id        = 'pause-icon';
+    icon.textContent = '⏸'; /* ⏸ */
+    var activeSlide = slides[current];
+    if (activeSlide) activeSlide.appendChild(icon);
+  }
+
+  function hidePauseIcon() {
+    var existing = document.getElementById('pause-icon');
+    if (existing) existing.parentNode.removeChild(existing);
+  }
+
+  /* ── Task 2.16: keyboard controls ───────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    switch (e.key) {
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        togglePause();
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        goTo(current + 1);
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        goTo(current - 1);
+        break;
+    }
+  });
+
+  /* ── Task 2.17: navigation dot click handlers ────────────────────────── */
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () {
+      paused = false; /* clicking a dot always resumes */
+      hidePauseIcon();
+      goTo(i);
+    });
+  });
+
+  /* ── Task 2.17: click anywhere on slideshow advances to next slide ───── */
+  if (ss) {
+    ss.addEventListener('click', function () {
+      goTo(current + 1);
+    });
+  }
+
+  /* ── Initialise: show first slide frozen; timer starts on user interaction ── */
+  if (slides.length > 0) {
+    slides[0].classList.add('active');
+    if (dots[0]) dots[0].classList.add('active');
+  }
+
+  window.addEventListener('espresso:start', function () {
+    started = true;
+    startProgress();
+  });
+}());
+
+</script>
+</body>
+</html>
