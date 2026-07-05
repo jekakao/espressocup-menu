@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EspressoCup Menü Editörü — Kullanım Kılavuzu</title>
+<meta name="description" content="EspressoCup dijital menü sistemi kullanım kılavuzu. Menü editörü ile TV menülerinizi kolayca düzenleyin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #16110c;
+    --surface: #211610;
+    --panel: #1b1208;
+    --border: #3d2c1c;
+    --border-soft: #2a1a0a;
+    --gold: #c8882a;
+    --gold-light: #e8a840;
+    --cream: #f0e4cc;
+    --text: #d8c9ae;
+    --muted: #8a7060;
+    --red: #d07070;
+    --green: #8a9a70;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #1b1208 0%, #16110c 100%);
+  }
+  .hero .cup { font-size: 2.5rem; }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--gold);
+    margin: 0.5rem 0 0.4rem;
+    letter-spacing: 0.02em;
+  }
+  .hero .subtitle {
+    color: var(--cream);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    margin: 0 0 0.75rem;
+  }
+  .hero .tagline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 0;
+  }
+
+  /* ── Layout ── */
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 3rem;
+  }
+  .toc h2 {
+    margin: 0 0 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    border: none;
+    padding: 0;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 1.4rem;
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+  @media (max-width: 640px) { .toc ol { columns: 1; } }
+  .toc li { margin-bottom: 0.45rem; }
+  .toc a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.92rem;
+    border-bottom: 1px dashed transparent;
+  }
+  .toc a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ── Sections ── */
+  section { margin-bottom: 3.5rem; scroll-margin-top: 1.5rem; }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--gold);
+    font-size: 1.65rem;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h2 .num {
+    display: inline-block;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-right: 0.6rem;
+    vertical-align: middle;
+  }
+  h3 {
+    color: var(--cream);
+    font-size: 1.08rem;
+    margin: 1.75rem 0 0.6rem;
+  }
+  p { margin: 0 0 1rem; }
+  strong { color: var(--cream); }
+  em { color: var(--muted); }
+  code {
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.86em;
+    color: var(--gold-light);
+    font-family: Consolas, Monaco, monospace;
+  }
+  ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; }
+  li { margin-bottom: 0.4rem; }
+
+  /* ── Tables ── */
+  .tbl-wrap { overflow-x: auto; margin: 0 0 1.25rem; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th {
+    text-align: left;
+    padding: 0.6rem 0.9rem;
+    background: var(--panel);
+    color: var(--gold);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--cream); white-space: nowrap; }
+  td.wrap-ok { white-space: normal; }
+
+  /* ── Callouts ── */
+  .note, .warn, .tip {
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin: 0 0 1.25rem;
+    font-size: 0.93rem;
+    border: 1px solid;
+  }
+  .note { background: #241a0d; border-color: #5a3a1a; }
+  .note::before { content: "💡 "; }
+  .warn { background: #2a1410; border-color: #6a3020; }
+  .warn::before { content: "⚠️ "; }
+  .tip  { background: #1a2012; border-color: #3a4a2a; }
+  .tip::before { content: "✅ "; }
+
+  /* ── Diagram ── */
+  .flow {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+  .flow .box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    text-align: center;
+    min-width: 150px;
+    flex: 1;
+    max-width: 220px;
+  }
+  .flow .box .icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+  .flow .box .t { color: var(--cream); font-weight: 600; font-size: 0.9rem; display: block; }
+  .flow .box .d { color: var(--muted); font-size: 0.78rem; display: block; margin-top: 0.2rem; }
+  .flow .arr {
+    align-self: center;
+    color: var(--gold);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  @media (max-width: 560px) {
+    .flow { flex-direction: column; align-items: center; }
+    .flow .arr { transform: rotate(90deg); }
+    .flow .box { max-width: 100%; width: 100%; }
+  }
+
+  /* ── Good / Bad price examples ── */
+  .gb { display: flex; gap: 1rem; flex-wrap: wrap; margin: 0 0 1.25rem; }
+  .gb > div {
+    flex: 1; min-width: 200px;
+    border-radius: 8px; padding: 0.9rem 1.2rem;
+    border: 1px solid;
+  }
+  .gb .good { background: #1a2012; border-color: #3a4a2a; }
+  .gb .bad  { background: #2a1410; border-color: #6a3020; }
+  .gb h4 { margin: 0 0 0.5rem; font-size: 0.85rem; }
+  .gb .good h4 { color: var(--green); }
+  .gb .bad h4  { color: var(--red); }
+  .gb ul { margin: 0; padding-left: 1.2rem; font-size: 0.9rem; }
+
+  /* ── Golden rules ── */
+  .rules { counter-reset: rule; list-style: none; padding: 0; }
+  .rules li {
+    counter-increment: rule;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1.1rem 0.85rem 3.2rem;
+    margin-bottom: 0.6rem;
+    position: relative;
+    font-size: 0.95rem;
+  }
+  .rules li::before {
+    content: counter(rule);
+    position: absolute;
+    left: 0.9rem; top: 50%;
+    transform: translateY(-50%);
+    width: 1.7rem; height: 1.7rem;
+    background: var(--gold);
+    color: var(--bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+
+  /* ── FAQ ── */
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+  }
+  summary {
+    cursor: pointer;
+    padding: 0.85rem 1.1rem;
+    color: var(--cream);
+    font-weight: 600;
+    font-size: 0.95rem;
+    list-style: none;
+    position: relative;
+    padding-right: 2.5rem;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    position: absolute; right: 1.1rem; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold); font-size: 1.2rem; font-weight: 400;
+  }
+  details[open] summary::after { content: "–"; }
+  details .a {
+    padding: 0 1.1rem 0.9rem;
+    font-size: 0.92rem;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 0.75rem;
+  }
+
+  /* ── Back to top / footer ── */
+  .top-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+  .top-link:hover { color: var(--gold); }
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  footer .logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* keyboard key */
+  kbd {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 0.05rem 0.45rem;
+    font-size: 0.82em;
+    color: var(--cream);
+    font-family: inherit;
+  }
+</style>
+</head>
+<body id="top">
+
+<div class="hero">
+  <span class="cup">☕</span>
+  <h1>EspressoCup Menü Editörü</h1>
+  <p class="subtitle">Kullanım Kılavuzu</p>
+  <p class="tagline">Dijital TV Menü Sistemi · v3.0</p>
+</div>
+
+<div class="wrap">
+
+<nav class="toc">
+  <h2>İçindekiler</h2>
+  <ol>
+    <li><a href="#sistem">Sistem Nasıl Çalışır?</a></li>
+    <li><a href="#acilis">Editörü Açma ve İlk Ekran</a></li>
+    <li><a href="#duzen">Ekran Düzeni</a></li>
+    <li><a href="#sayfalar">Sayfalarla Çalışmak</a></li>
+    <li><a href="#urunler">Ürünleri Düzenlemek</a></li>
+    <li><a href="#sayfa-ayar">Sayfa Ayarları</a></li>
+    <li><a href="#sablonlar">Şablon Türleri</a></li>
+    <li><a href="#marka">Marka Bilgileri</a></li>
+    <li><a href="#tema">Tema ve Renkler</a></li>
+    <li><a href="#ayarlar">Genel Ayarlar</a></li>
+    <li><a href="#kayit">Kaydetme ve Yedekleme</a></li>
+    <li><a href="#export">TV Dosyalarını Dışa Aktarma</a></li>
+    <li><a href="#yayin">Menüyü Yayınlama (GitHub)</a></li>
+    <li><a href="#tv">TV'de Menüyü Başlatma</a></li>
+    <li><a href="#gerial">Geri Alma / Yineleme</a></li>
+    <li><a href="#sss">Sık Sorulan Sorular</a></li>
+    <li><a href="#kurallar">Altın Kurallar</a></li>
+  </ol>
+</nav>
+
+<!-- ══════════ 1 ══════════ -->
+<section id="sistem">
+  <h2><span class="num">1</span>Sistem Nasıl Çalışır?</h2>
+  <p>Sistem üç adımda çalışır: menü <strong>editörde düzenlenir</strong>, dosyalar <strong>GitHub'a (internete) yüklenir</strong>, TV'ler menüyü <strong>internet adresinden açar</strong>.</p>
+
+  <div class="flow">
+    <div class="box">
+      <span class="icon">🖥️</span>
+      <span class="t">Menü Editörü</span>
+      <span class="d">editor.html — ürünleri ve fiyatları burada düzenlersiniz</span>
+    </div>
+    <span class="arr">➜</span>
+    <div class="box">
+      <span class="icon">📄</span>
+      <span class="t">TV Dosyaları</span>
+      <span class="d">tv1.html · tv2.html · tv3.html</span>
+    </div>
+    <span class="arr">➜</span>
+    <div class="box">
+      <span class="icon">🌐</span>
+      <span class="t">GitHub</span>
+      <span class="d">Dosyalar internete yüklenir</span>
+    </div>
+    <span class="arr">➜</span>
+    <div class="box">
+      <span class="icon">📺</span>
+      <span class="t">Samsung TV</span>
+      <span class="d">İnternet adresini açar, slaytlar döner</span>
+    </div>
+  </div>
+
+  <ul>
+    <li><strong>Editör:</strong> Bilgisayarınızda tarayıcıda (Chrome önerilir) açtığınız <code>editor.html</code> dosyası.</li>
+    <li><strong>TV dosyaları:</strong> Editörden dışa aktarılan üç HTML dosyası. Her dosya bir TV'ye aittir ve menü slaytlarını ayarladığınız sürelerle döndürür.</li>
+    <li><strong>GitHub:</strong> Dosyaların yayınlandığı internet adresi. TV'ler menüyü buradan açar — <strong>USB ile dosya açmak mümkün değildir.</strong></li>
+  </ul>
+
+  <div class="warn"><strong>Önemli:</strong> Editörde yaptığınız değişiklikler TV'lere kendiliğinden gitmez. Değişiklik yaptıktan sonra <strong>dosyaları dışa aktarıp GitHub'a yüklemek</strong> (veya yüklenmesi için sistem yöneticisine göndermek) gerekir. Ayrıntılar <a href="#yayin" style="color:var(--gold)">Bölüm 13</a>'te.</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 2 ══════════ -->
+<section id="acilis">
+  <h2><span class="num">2</span>Editörü Açma ve İlk Ekran</h2>
+  <p><code>editor.html</code> dosyasına çift tıklayın — tarayıcıda açılır. Karşınıza iki seçenekli bir başlangıç ekranı gelir:</p>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Buton</th><th>Ne yapar?</th></tr>
+    <tr><td>EspressoCup şablonu ile başla</td><td class="wrap-ok">Hazır menüyü yükler (tüm kahveler, fiyatlar, sayfalar dolu gelir). İlk kullanımda bunu seçin.</td></tr>
+    <tr><td>Mevcut JSON dosyasını yükle</td><td class="wrap-ok">Daha önce kaydettiğiniz <code>espressocup-menu.json</code> dosyasını açar. Kaldığınız yerden devam etmek için bunu seçin.</td></tr>
+  </table></div>
+
+  <h3>"Kaydedilmemiş oturum bulundu" uyarısı</h3>
+  <p>Editör, çalışırken yaptıklarınızı tarayıcıya otomatik kaydeder. Editörü tekrar açtığınızda bu uyarıyı görürseniz:</p>
+  <ul>
+    <li><strong>Geri yükle</strong> → Kaldığınız yerden devam edersiniz. <em>(Genelde bunu seçin.)</em></li>
+    <li><strong>Sıfırdan başla</strong> → Önceki çalışma silinir, başlangıç ekranına dönersiniz.</li>
+  </ul>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 3 ══════════ -->
+<section id="duzen">
+  <h2><span class="num">3</span>Ekran Düzeni — Neresi Ne İşe Yarar?</h2>
+  <div class="tbl-wrap"><table>
+    <tr><th>Bölge</th><th>İçeriği</th></tr>
+    <tr><td>Üst bar</td><td class="wrap-ok">Durum yazısı · ↩ Geri Al · ↪ Yinele · 🎨 Tema · ⚙ Ayarlar · <strong>JSON Kaydet</strong> · <strong>TV Dosyalarını Aktar</strong> · EN/TR dil düğmesi</td></tr>
+    <tr><td>Sol menü</td><td class="wrap-ok">TV 1 / TV 2 / TV 3 altında gruplanmış sayfa listesi ve <strong>+ Sayfa ekle</strong> butonu</td></tr>
+    <tr><td>Ana alan</td><td class="wrap-ok">Sayfa seçiliyse → o sayfanın ürünleri ve ayarları. Sayfa seçili değilse → <strong>Marka Bilgileri</strong> ve <strong>Tema</strong> sekmeleri</td></tr>
+    <tr><td>Alt bilgi</td><td class="wrap-ok">"Her oturumdan sonra JSON dosyanızı kaydedin" hatırlatması</td></tr>
+  </table></div>
+
+  <h3>Üst bardaki durum yazısı</h3>
+  <ul>
+    <li><strong style="color:var(--gold)">"Kaydedilmemiş değişiklikler ●"</strong> (turuncu) → JSON dosyanızı henüz kaydetmediniz.</li>
+    <li><strong>"Kaydedildi 14:32:05"</strong> → Son JSON kaydının saati.</li>
+  </ul>
+
+  <h3>Dil değiştirme</h3>
+  <p>Üst barın en sağındaki <strong>EN / TR</strong> butonu editörün dilini değiştirir. Bu sadece editör arayüzünü etkiler — menüdeki ürün adları değişmez.</p>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 4 ══════════ -->
+<section id="sayfalar">
+  <h2><span class="num">4</span>Sayfalarla Çalışmak (Sol Menü)</h2>
+  <p>Sol menüde sayfalar TV'lere göre gruplanır. Her sayfa satırında şu butonlar vardır:</p>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Buton</th><th>Ne yapar?</th></tr>
+    <tr><td>Açık / Kapalı</td><td class="wrap-ok">Sayfayı TV'de göster/gizle. Kapalı sayfa TV'de görünmez ama silinmez.</td></tr>
+    <tr><td>▲ ▼</td><td class="wrap-ok">Sayfanın gösterim sırasını değiştirir (aynı TV içinde).</td></tr>
+    <tr><td>⧉</td><td class="wrap-ok">Sayfayı kopyalar. Kopya, yeri olan ilk TV'ye eklenir.</td></tr>
+    <tr><td>×</td><td class="wrap-ok">Sayfayı siler. <strong>Dikkat: geri alınamaz!</strong> Silmeden önce JSON kaydedin.</td></tr>
+  </table></div>
+
+  <h3>Yeni sayfa eklemek</h3>
+  <ol>
+    <li>Sol menünün altındaki <strong>+ Sayfa ekle</strong> butonuna tıklayın.</li>
+    <li>Açılan pencereden bir şablon seçin (bkz. <a href="#sablonlar" style="color:var(--gold)">Bölüm 7</a>).</li>
+    <li>Sayfa, yeri olan ilk TV'ye eklenir. Sonra sayfa ayarlarından istediğiniz TV'ye taşıyabilirsiniz.</li>
+  </ol>
+  <div class="note"><strong>Kural:</strong> Her TV'de en fazla <strong>6 sayfa</strong> olabilir. Limit doluysa önce bir sayfa silin veya başka TV'ye taşıyın.</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 5 ══════════ -->
+<section id="urunler">
+  <h2><span class="num">5</span>Ürünleri Düzenlemek</h2>
+  <p>Sol menüden bir sayfaya tıklayın — ürün listesi ana alanda açılır. Her ürün bir satırdır:</p>
+  <p style="text-align:center"><code>[ Ürün adı ] [ not ] [ S ] [ M ] [ L ] &nbsp;★&nbsp; NEW &nbsp;👁&nbsp; ▲ ▼ &nbsp;×</code></p>
+
+  <h3>Yazı alanları</h3>
+  <ul>
+    <li><strong>Ürün adı</strong> — Türk Kahvesi, Latte vb.</li>
+    <li><strong>Not</strong> — ürün adının altında küçük italik yazı olarak görünür (ör. "Günlük taze öğütülmüş"). Boş bırakılabilir.</li>
+  </ul>
+
+  <h3>Fiyatlar — çok önemli kural</h3>
+  <p>Fiyat kutularına <strong>sadece rakam</strong> yazın:</p>
+  <div class="gb">
+    <div class="good">
+      <h4>✓ Doğru</h4>
+      <ul><li><code>120</code></li><li><code>95</code></li><li><em>(fiyat yoksa boş bırakın)</em></li></ul>
+    </div>
+    <div class="bad">
+      <h4>✗ Yanlış</h4>
+      <ul><li><code>120 ₺</code></li><li><code>₺95</code></li><li><code>yok</code>, <code>-</code></li></ul>
+    </div>
+  </div>
+  <ul>
+    <li>TL işareti yazmayın — TV ekranında otomatik biçimlenir.</li>
+    <li>Bir boyutta fiyat yoksa kutuyu <strong>boş bırakın</strong> — TV'de <code>—</code> (tire) olarak görünür.</li>
+    <li>Hatalı fiyat girerseniz kutu <strong style="color:var(--red)">kırmızıya</strong> döner ve kaydedilmez. Düzeltince normale döner.</li>
+  </ul>
+
+  <h3>Satırdaki düğmeler</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th>Düğme</th><th>Anlamı</th></tr>
+    <tr><td>★</td><td class="wrap-ok">Soğuk içecek işareti. Açıksa ürün adının yanında ★ yıldızı görünür.</td></tr>
+    <tr><td>NEW</td><td class="wrap-ok">Ürünün yanında turuncu "NEW" rozeti gösterir. Yeni ürünler için.</td></tr>
+    <tr><td>👁 / 🚫</td><td class="wrap-ok">Ürünü göster/gizle. Gizli ürün TV'de görünmez ama silinmez.</td></tr>
+    <tr><td>▲ ▼</td><td class="wrap-ok">Ürünün listedeki sırasını değiştirir.</td></tr>
+    <tr><td>×</td><td class="wrap-ok">Ürünü siler. Onay penceresi çıkar ("Bir daha sorma" işaretlerseniz bir daha sormaz).</td></tr>
+  </table></div>
+
+  <h3>Ürün ekleme</h3>
+  <p>Listenin altındaki <strong>+ Ürün ekle</strong> butonuna tıklayın. Sayfa dolduysa buton yerine "Bölüm dolu (21/21)" gibi bir yazı görürsünüz — her şablonun ürün limiti vardır.</p>
+  <div class="tip">Boş kalan ürün yerleri TV'de otomatik olarak <strong>"— Yakında —"</strong> satırı olarak görünür.</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 6 ══════════ -->
+<section id="sayfa-ayar">
+  <h2><span class="num">6</span>Sayfa Ayarları</h2>
+  <p>Bir sayfa seçtiğinizde, ürün listesinin üstünde sayfa ayarları görünür:</p>
+
+  <h3>Sayfa adı</h3>
+  <p>Sayfa adına tıklayın → yazın → <kbd>Enter</kbd>'a basın. (<kbd>Esc</kbd> ile vazgeçersiniz.) Bu ad sadece editörde görünür; TV'deki başlık ayrıdır (aşağıda "Panel düzeni").</p>
+
+  <h3>Açık / Kapalı</h3>
+  <p>Sayfayı TV döngüsüne dahil eder veya çıkarır.</p>
+
+  <h3>TV seçimi</h3>
+  <p>Sayfanın hangi TV'de gösterileceğini seçin (TV 1 / TV 2 / TV 3). Hedef TV'de 6 sayfa varsa taşıma yapılmaz, uyarı görürsünüz.</p>
+
+  <h3>Slayt süresi</h3>
+  <p>Bu sayfanın ekranda kaç saniye kalacağı. <strong>5–60 arası tam sayı</strong> girin. <strong>Boş bırakırsanız</strong> genel varsayılan süre kullanılır (standart: 12 saniye, ⚙ Ayarlar'dan değiştirilir).</p>
+  <div class="note">Uzun listeler (ör. 21 ürünlü kahve sayfası) için 15 sn, kısa sayfalar için 6–10 sn iyi çalışır.</div>
+
+  <h3>Fiyat güncelleme tarihi</h3>
+  <p>Grid ve Spacious (ferah) şablonlu sayfalarda görünür. Bu tarih TV ekranının sağ altında küçük yazıyla "Fiyatlar: 05.07.2026" şeklinde gösterilir. <strong>Bugüne ayarla</strong> butonu tarihi tek tıkla bugüne getirir. Fiyat değiştirdiğinizde güncellemeyi unutmayın.</p>
+
+  <h3>Panel düzeni (TV'de görünen başlıklar)</h3>
+  <p>Grid, Spacious ve Addon şablonlarında şu 4 alan düzenlenir:</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Alan</th><th>TV'de nerede görünür?</th></tr>
+    <tr><td>Marka yazısı</td><td class="wrap-ok">Ekranın solundaki dar şeritte, dikey büyük yazı (ör. "JUST ESPRESSO")</td></tr>
+    <tr><td>Etiket</td><td class="wrap-ok">Sayfa başlığının üstünde altın renkli küçük yazı (ör. "HOT &amp; COLD COFFEE")</td></tr>
+    <tr><td>Başlık</td><td class="wrap-ok">Büyük şık başlık (ör. "Kahveler")</td></tr>
+    <tr><td>Alt başlık</td><td class="wrap-ok">Başlığın altındaki açıklama (ör. "Sıcak ve soğuk kahve çeşitlerimiz")</td></tr>
+  </table></div>
+
+  <h3>Boyut etiketleri</h3>
+  <p>Fiyat sütunlarının başlıkları (ör. <code>S · 250ml</code>, <code>M · 350ml</code>, <code>L · 470ml</code>). İsterseniz değiştirin — örneğin Milkshake sayfasında <code>M · 350ml</code> ve <code>L · 470ml</code> kullanılır.</p>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 7 ══════════ -->
+<section id="sablonlar">
+  <h2><span class="num">7</span>Şablon Türleri</h2>
+  <p>Yeni sayfa eklerken 8 şablondan birini seçersiniz:</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Şablon</th><th>Limit</th><th>Ne için kullanılır?</th></tr>
+    <tr><td>Grid · 3 fiyat</td><td>21</td><td class="wrap-ok">S / M / L üç boyutlu ürünler. Ana kahve menüsü için ideal.</td></tr>
+    <tr><td>Grid · 2 fiyat</td><td>16</td><td class="wrap-ok">İki boyutlu ürünler (ör. Milkshake M/L).</td></tr>
+    <tr><td>Grid · 1 fiyat</td><td>16</td><td class="wrap-ok">Tek fiyatlı ürünler (atıştırmalık, kiloluk kahve).</td></tr>
+    <tr><td>Spacious (Ferah)</td><td>8</td><td class="wrap-ok">Az ürün, bol boşluk. Fiyat alanı serbest metindir ("Fincan 95" yazılabilir).</td></tr>
+    <tr><td>Featured single</td><td>1</td><td class="wrap-ok">Tam ekran tek ürün + fotoğraf. İmza içeceğiniz için.</td></tr>
+    <tr><td>Featured quad</td><td>4</td><td class="wrap-ok">2×2 fotoğraflı ürün vitrini (ör. Frappuccino çeşitleri).</td></tr>
+    <tr><td>Addon cards</td><td>4</td><td class="wrap-ok">Ekstralar: şurup, ekstra shot vb. 4 sabit kart.</td></tr>
+    <tr><td>Info &amp; QR</td><td>—</td><td class="wrap-ok">Marka hikayesi + QR kod + uyarı barı. Ürün içermez.</td></tr>
+  </table></div>
+
+  <h3>Vitrin (Featured) sayfalarına özel alanlar</h3>
+  <p>Featured single ve quad sayfalarında her ürün için: <strong>ad, açıklama, S/M/L fiyatları</strong> ve <strong>fotoğraf yükleme</strong> (en fazla 3&nbsp;MB, JPG/PNG — fotoğraf doğrudan dosyanın içine gömülür). Rozet düğmeleri:</p>
+  <ul>
+    <li><strong>✦ İmza rozeti</strong> — sağ üst köşede altın "İmza İçeceği" etiketi</li>
+    <li><strong>★ Soğuk</strong> — ad yanında yıldız</li>
+    <li><strong>NEW rozeti</strong> — turuncu "NEW" etiketi</li>
+    <li><strong>🏷️ Kampanya rozeti</strong> — sol üst köşede kırmızı "Kampanya" etiketi</li>
+    <li><strong>👁 Görünür / 🚫 Gizli</strong> — ürünü göster/gizle</li>
+  </ul>
+
+  <h3>Addon (Ek) kartları</h3>
+  <p>Her kartta: <strong>İkon</strong> (emoji, ör. ☕ 🍫), <strong>Ad</strong>, <strong>Fiyat</strong> (serbest metin, ör. "+15"), <strong>Açıklama</strong>.</p>
+
+  <h3>Info &amp; QR sayfası</h3>
+  <p>Bu sayfayı seçtiğinizde marka bilgileri paneli ve <strong>uyarı metni</strong> alanları açılır:</p>
+  <ul>
+    <li><strong>Uyarı metni</strong> — ekranın altındaki barda büyük altın yazı (ör. alerjen uyarısı)</li>
+    <li><strong>Alt uyarı metni</strong> — uyarının altındaki küçük yazı</li>
+  </ul>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 8 ══════════ -->
+<section id="marka">
+  <h2><span class="num">8</span>Marka Bilgileri (Branding)</h2>
+  <p>Sol menüde hiçbir sayfa seçili değilken ana alanda <strong>Branding</strong> sekmesi görünür.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Alan</th><th>Açıklama</th></tr>
+    <tr><td>Kafe adı</td><td class="wrap-ok">Ör. "EspressoCup"</td></tr>
+    <tr><td>Slogan</td><td class="wrap-ok">Ör. "Her yudumda bir hikaye"</td></tr>
+    <tr><td>Instagram</td><td class="wrap-ok"><strong>@ işareti OLMADAN</strong> yazın (ör. <code>espressocupcoffee</code>). TV ekranında @ otomatik eklenir.</td></tr>
+    <tr><td>Web sitesi</td><td class="wrap-ok">Ör. <code>https://espressocup.com.tr</code></td></tr>
+    <tr><td>Marka hikayesi</td><td class="wrap-ok">Info &amp; QR sayfasında gösterilen tanıtım metni</td></tr>
+    <tr><td>QR kod görseli</td><td class="wrap-ok">Info &amp; QR sayfasındaki QR kod. PNG yükleyin (en fazla 3 MB). Kaldırırsanız dekoratif desen gösterilir.</td></tr>
+  </table></div>
+  <p>Bu bilgiler dışa aktarılan TV dosyalarının içine gömülür.</p>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 9 ══════════ -->
+<section id="tema">
+  <h2><span class="num">9</span>Tema ve Renkler</h2>
+  <p>Üst bardaki <strong>🎨 Tema</strong> butonuna tıklayın. Renkler <strong>TV ekranındaki menünün</strong> görünümünü belirler.</p>
+
+  <h3>Hazır temalar</h3>
+  <ul>
+    <li><strong>Dark Espresso</strong> — koyu kahve tonları <em>(varsayılan)</em></li>
+    <li><strong>Warm Cream</strong> — sıcak krem tonları</li>
+    <li><strong>Deep Forest</strong> — koyu yeşil tonları</li>
+  </ul>
+  <p>Bir temaya tıklayın, hemen uygulanır. "Mevcut palet" bölümünde renkleri önizlersiniz.</p>
+
+  <h3>Özel renkler</h3>
+  <p><strong>Özel renkler</strong> başlığına tıklayıp açın. 6 rengi tek tek değiştirebilirsiniz: Arka plan, Yüzey, Panel, Altın vurgu, Yazı, Soluk yazı.</p>
+  <div class="note">Değişikliklerin TV'de görünmesi için dosyaları <strong>yeniden dışa aktarmanız</strong> gerekir.</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 10 ══════════ -->
+<section id="ayarlar">
+  <h2><span class="num">10</span>Genel Ayarlar (⚙ Settings)</h2>
+  <p>Üst bardaki <strong>⚙ Ayarlar</strong> butonuyla sağdan bir panel açılır. Üç bölümü vardır:</p>
+
+  <h3>Genel süre</h3>
+  <p>Varsayılan slayt süresi (saniye, 5–60 arası). Slayt süresi boş bırakılan tüm sayfalar bu değeri kullanır.</p>
+
+  <h3>Yazı boyutları</h3>
+  <p>TV ekranındaki yazıların boyutları (12 ayrı değer): ürün adı, not, fiyat, başlık, alt başlık, rozetler (★ / NEW / İmza / Kampanya), fiyat tarihi satırı, marka hikayesi, Instagram yazısı.</p>
+  <ul>
+    <li>Değerler <strong>0,5 ile 12 arası</strong> olmalıdır (birim: ekran genişliğinin yüzdesi).</li>
+    <li>Küçük dokunuşlar yeterlidir: örneğin 3.3 → 3.6 gözle görülür bir büyümedir.</li>
+  </ul>
+
+  <h3>Görünen etiketler</h3>
+  <p>TV ekranındaki sabit yazıları özelleştirin:</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Etiket</th><th>Varsayılan</th><th>Nerede görünür?</th></tr>
+    <tr><td>Yakında satırı</td><td><code>— Yakında —</code></td><td class="wrap-ok">Boş ürün yerlerinde</td></tr>
+    <tr><td>Fiyat tarihi ön eki</td><td><code>Fiyatlar:</code></td><td class="wrap-ok">Sağ alttaki tarih satırında</td></tr>
+    <tr><td>İmza rozeti yazısı</td><td><code>✦ İmza İçeceği</code></td><td class="wrap-ok">Vitrin sayfasındaki altın rozette</td></tr>
+    <tr><td>NEW rozeti yazısı</td><td><code>NEW</code></td><td class="wrap-ok">Turuncu rozette</td></tr>
+    <tr><td>QR alt yazısı</td><td><em>(boş)</em></td><td class="wrap-ok">QR kodun altında</td></tr>
+    <tr><td>Kampanya rozeti</td><td><code>🏷️ Kampanya</code></td><td class="wrap-ok">Kırmızı rozette</td></tr>
+  </table></div>
+  <div class="note">Ayarlar panelindeki değişiklikler <strong>bir sonraki dışa aktarmada</strong> TV dosyalarına yansır.</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 11 ══════════ -->
+<section id="kayit">
+  <h2><span class="num">11</span>Kaydetme ve Yedekleme</h2>
+  <h3>İki tür kayıt vardır — ikisi farklı şeydir!</h3>
+  <div class="tbl-wrap"><table>
+    <tr><th></th><th>Otomatik kayıt</th><th>JSON Kaydet</th></tr>
+    <tr><td>Nasıl çalışır?</td><td class="wrap-ok">Her değişiklikte tarayıcıya kendiliğinden kaydedilir</td><td class="wrap-ok">Üst bardaki <strong>JSON Kaydet</strong> butonuyla dosya indirilir</td></tr>
+    <tr><td>Nerede durur?</td><td class="wrap-ok">Sadece o bilgisayardaki o tarayıcıda</td><td class="wrap-ok">Bilgisayarınızda dosya olarak (<code>espressocup-menu.json</code>)</td></tr>
+    <tr><td>Güvenilir mi?</td><td class="wrap-ok">Hayır — tarayıcı geçmişi temizlenirse <strong style="color:var(--red)">kaybolur</strong></td><td class="wrap-ok">Evet — <strong style="color:var(--green)">tek gerçek yedeğinizdir</strong></td></tr>
+  </table></div>
+
+  <div class="warn"><strong>Altın kural:</strong> Her çalışma seansının sonunda mutlaka <strong>"JSON Kaydet"</strong> butonuna basın ve inen dosyayı güvenli bir yerde saklayın (ör. tarih ekleyerek: <code>menu-2026-07-05.json</code>). Bir sonraki açılışta bu dosyayı <strong>"Mevcut JSON dosyasını yükle"</strong> ile geri yüklersiniz.</div>
+
+  <h3>Dosya yüklerken uyarı görürseniz</h3>
+  <ul>
+    <li><em>"Dosya yüklenemedi — geçersiz JSON"</em> → Dosya bozuk veya yanlış dosya seçilmiş. Başka bir yedek deneyin.</li>
+    <li><em>Şema uyarısı</em> → Dosya eski bir sürümden olabilir; yine de yüklenir ama kontrol edin.</li>
+    <li><em>"Geri alma geçmişi temizlendi"</em> → Normaldir; yeni dosya yüklenince Geri Al geçmişi sıfırlanır.</li>
+  </ul>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 12 ══════════ -->
+<section id="export">
+  <h2><span class="num">12</span>TV Dosyalarını Dışa Aktarma</h2>
+  <p>Menünüz hazır olduğunda:</p>
+  <ol>
+    <li>Üst bardaki turuncu <strong>TV Dosyalarını Aktar</strong> butonuna tıklayın.</li>
+    <li>Tarayıcı üç dosya indirir: <code>tv1.html</code>, <code>tv2.html</code>, <code>tv3.html</code> (yaklaşık yarım saniye arayla).</li>
+    <li>Tarayıcı "birden çok dosya indirilsin mi?" diye sorarsa <strong>İzin ver</strong> deyin.</li>
+  </ol>
+
+  <h3>Bilinmesi gerekenler</h3>
+  <ul>
+    <li>Dosya adları her zaman <code>tv1.html / tv2.html / tv3.html</code> olur. Aynı klasöre tekrar aktarırsanız tarayıcı eskileri <code>tv1 (1).html</code> gibi yeniden adlandırır — <strong>en yenisini</strong> kullandığınızdan emin olun.</li>
+    <li>Bir TV'nin hiç açık sayfası yoksa o TV'nin dosyası atlanır ve uyarı görürsünüz.</li>
+    <li>Her dosya <strong>tamamen bağımsızdır</strong>: fotoğraflar, yazı tipleri, QR kod — hepsi içine gömülüdür.</li>
+  </ul>
+  <div class="warn">İndirilen dosyalar henüz <strong>yayında değildir</strong>. TV'lerde görünmeleri için bir sonraki bölümde anlatıldığı gibi GitHub'a yüklenmeleri (veya sistem yöneticisine gönderilmeleri) gerekir.</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 13 ══════════ -->
+<section id="yayin">
+  <h2><span class="num">13</span>Menüyü Yayınlama — GitHub'a Yükleme</h2>
+  <p>TV'ler menü dosyalarını USB'den <strong>açamaz</strong> — dosyalar internete, <strong>GitHub</strong> adlı siteye yüklenir ve TV'ler şu adresleri gösterir:</p>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>TV</th><th>Adres</th></tr>
+    <tr><td>TV 1</td><td class="wrap-ok"><code>https://jekakao.github.io/espressocup-menu/tv1.html</code></td></tr>
+    <tr><td>TV 2</td><td class="wrap-ok"><code>https://jekakao.github.io/espressocup-menu/tv2.html</code></td></tr>
+    <tr><td>TV 3</td><td class="wrap-ok"><code>https://jekakao.github.io/espressocup-menu/tv3.html</code></td></tr>
+  </table></div>
+
+  <h3>Şu an için: dosyaları sistem yöneticisine gönderin</h3>
+  <p>GitHub yetkiniz olana kadar yüklemeyi sistem yöneticisi yapar. Sizin yapacağınız:</p>
+  <ol>
+    <li>Editörden <strong>TV Dosyalarını Aktar</strong> ile üç dosyayı indirin.</li>
+    <li>İnen <code>tv1.html</code>, <code>tv2.html</code>, <code>tv3.html</code> dosyalarını <strong>sistem yöneticisine gönderin</strong> (WhatsApp, e-posta — nasıl kolayınıza gelirse).</li>
+    <li>Yönetici dosyaları GitHub'a yükler; birkaç dakika içinde yeni menü yayında olur.</li>
+    <li>TV'lerde menü sayfasını yenileyin (bkz. <a href="#tv" style="color:var(--gold)">Bölüm 14</a>).</li>
+  </ol>
+
+  <h3>İleride kendiniz yüklemek isterseniz</h3>
+
+  <h3 style="font-size:0.95rem">Adım 1 — GitHub hesabı açın (ücretsiz, 5 dakika)</h3>
+  <ol>
+    <li>Tarayıcıda <strong>github.com</strong> adresine gidin, sağ üstteki <strong>Sign up</strong> (Kaydol) düğmesine tıklayın.</li>
+    <li>E-posta adresinizi yazın, bir şifre belirleyin ve bir <strong>kullanıcı adı</strong> seçin.</li>
+    <li>GitHub e-postanıza bir doğrulama kodu gönderir — kodu girin, hesabınız hazır.</li>
+  </ol>
+
+  <h3 style="font-size:0.95rem">Adım 2 — Depoya erişim yetkisi isteyin</h3>
+  <p>Menü dosyaları <strong>espressocup-menu</strong> adlı depoda (klasörde) durur. Oraya dosya yükleyebilmeniz için davet edilmeniz gerekir:</p>
+  <ol>
+    <li>GitHub <strong>kullanıcı adınızı</strong> sistem yöneticisine bildirin.</li>
+    <li>Yönetici sizi depoya ortak çalışan (collaborator) olarak ekler.</li>
+    <li>E-postanıza gelen davet mesajındaki <strong>Accept invitation</strong> (Daveti kabul et) düğmesine tıklayın. Artık yükleme yetkiniz var.</li>
+  </ol>
+
+  <h3 style="font-size:0.95rem">Adım 3 — Dosyaları yükleyin</h3>
+  <ol>
+    <li>GitHub'a giriş yapın ve depoyu açın: <code>github.com/jekakao/espressocup-menu</code></li>
+    <li><strong>Add file → Upload files</strong> düğmesine tıklayın.</li>
+    <li><code>tv1.html</code>, <code>tv2.html</code>, <code>tv3.html</code> dosyalarını pencereye sürükleyin (üçünü aynı anda sürükleyebilirsiniz). Eski dosyaların üzerine yazılır — bu normaldir.</li>
+    <li>Sayfanın altındaki yeşil <strong>Commit changes</strong> düğmesine tıklayın.</li>
+    <li>1–2 dakika bekleyin — yeni menü yayındadır. TV'lerde sayfayı yenileyin.</li>
+  </ol>
+
+  <div class="warn"><strong>Dikkat:</strong> Dosya adlarını değiştirmeyin. <code>tv1 (1).html</code> gibi bir ad ile yüklerseniz TV'ler onu görmez — adlar tam olarak <code>tv1.html</code>, <code>tv2.html</code>, <code>tv3.html</code> olmalıdır. (Tarayıcı aynı klasöre tekrar indirince ada <code>(1)</code> ekler; yüklemeden önce kontrol edin.)</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 14 ══════════ -->
+<section id="tv">
+  <h2><span class="num">14</span>TV'de Menüyü Başlatma</h2>
+  <ol>
+    <li>TV'nin internet tarayıcısında ilgili adresi açın (yukarıdaki tablo — TV 1 için <code>tv1.html</code> adresi vb.). Adres bir kez girildikten sonra genelde kayıtlı kalır / yer imlerine eklenebilir.</li>
+    <li>Ekranda <strong>"Ekrana dokunun / Başlatmak için OK'a basın"</strong> yazısı görünür.</li>
+    <li>Kumandada <kbd>OK</kbd> tuşuna basın (veya dokunmatik ekransa dokunun).</li>
+    <li>Ekran tam ekrana geçer ve slayt gösterisi başlar. Sayfalar ayarladığınız sürelerle otomatik döner; alttaki ilerleme çubuğu kalan süreyi gösterir.</li>
+  </ol>
+  <div class="note">Slayt gösterisi, OK'a basılana kadar <strong>başlamaz</strong> — bu bilinçli bir davranıştır (TV tam ekrana geçebilsin diye).</div>
+
+  <h3>Menü güncellendiğinde</h3>
+  <p>Yeni dosyalar GitHub'a yüklendikten sonra TV eski menüyü göstermeye devam edebilir. TV tarayıcısında sayfayı <strong>yenileyin</strong> veya tarayıcıyı kapatıp adresi yeniden açın — yeni menü gelir.</p>
+  <p>TV'ler dikey (portre) modda, 4K çözünürlükte (2160×3840) çalışacak şekilde tasarlanmıştır.</p>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 14 ══════════ -->
+<section id="gerial">
+  <h2><span class="num">15</span>Geri Alma / Yineleme</h2>
+  <ul>
+    <li><strong>↩ Geri Al</strong> — son işlemi geri alır. Klavye: <kbd>Ctrl</kbd> + <kbd>Z</kbd></li>
+    <li><strong>↪ Yinele</strong> — geri aldığınızı tekrar yapar. Klavye: <kbd>Ctrl</kbd> + <kbd>Y</kbd></li>
+  </ul>
+  <p>Butonun üzerine gelince hangi işlemin geri alınacağı yazar (ör. "Geri Al: Ürün düzenle: Latte").</p>
+  <div class="warn"><strong>Geri alınamayanlar:</strong> Sayfa silme — bu yüzden silmeden önce JSON kaydedin! Ayrıca yeni bir JSON dosyası yüklemek geri alma geçmişini sıfırlar.</div>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 15 ══════════ -->
+<section id="sss">
+  <h2><span class="num">16</span>Sık Sorulan Sorular ve Sorun Giderme</h2>
+
+  <details>
+    <summary>Fiyat yazdım ama kutu kırmızı oldu, kaydolmuyor.</summary>
+    <div class="a">Fiyata harf, ₺ işareti veya boşluk girmişsinizdir. Sadece rakam yazın: <code>150</code>.</div>
+  </details>
+  <details>
+    <summary>Ürünü sildim ama TV'de hâlâ görünüyor.</summary>
+    <div class="a">Editördeki değişiklik TV'ye otomatik gitmez. <strong>TV Dosyalarını Aktar</strong> ile yeni dosyaları indirin, GitHub'a yükleyin (yetkiniz yoksa sistem yöneticisine gönderin) ve TV'de sayfayı yenileyin.</div>
+  </details>
+  <details>
+    <summary>Dosyalar GitHub'a yüklendi ama TV'de hâlâ eski menü var.</summary>
+    <div class="a">Yüklemeden sonra yayının güncellenmesi 1–2 dakika sürebilir. Biraz bekleyip TV'de sayfayı yenileyin. Hâlâ eskiyse TV tarayıcısını tamamen kapatıp adresi yeniden açın.</div>
+  </details>
+  <details>
+    <summary>Sayfayı başka TV'ye taşıyamıyorum.</summary>
+    <div class="a">Hedef TV'de zaten 6 sayfa vardır. Önce oradan bir sayfa silin veya taşıyın.</div>
+  </details>
+  <details>
+    <summary>Fotoğraf yüklenmiyor.</summary>
+    <div class="a">Dosya 3 MB'den büyük olabilir. Fotoğrafı küçültüp tekrar deneyin.</div>
+  </details>
+  <details>
+    <summary>"Otomatik kayıt kullanılamıyor" uyarısı çıkıyor.</summary>
+    <div class="a">Tarayıcı depolaması dolu veya kısıtlı. Sık sık <strong>JSON Kaydet</strong> kullanın — çalışmanız kaybolmasın.</div>
+  </details>
+  <details>
+    <summary>TV'de slayt gösterisi başlamıyor.</summary>
+    <div class="a">Kumandadan <kbd>OK</kbd> tuşuna basın. Gösterinin başlaması için ilk dokunuş/tıklama gereklidir.</div>
+  </details>
+  <details>
+    <summary>Instagram adresim TV'de @@kullaniciadi görünüyor.</summary>
+    <div class="a">Branding'de Instagram alanına @ işaretiyle yazmışsınız. @ işaretini silin — TV otomatik ekler.</div>
+  </details>
+  <details>
+    <summary>Bir sayfayı geçici olarak yayından kaldırmak istiyorum ama silmek istemiyorum.</summary>
+    <div class="a">Sol menüde sayfanın yanındaki <strong>Açık/Kapalı</strong> düğmesini "Kapalı" yapın. Sayfa durur, TV'de görünmez.</div>
+  </details>
+  <details>
+    <summary>Yazılar TV'de çok küçük/büyük görünüyor.</summary>
+    <div class="a"><strong>⚙ Ayarlar → Yazı boyutları</strong> bölümünden ilgili değeri küçük adımlarla değiştirin, yeniden dışa aktarıp TV'de kontrol edin.</div>
+  </details>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+<!-- ══════════ 16 ══════════ -->
+<section id="kurallar">
+  <h2><span class="num">17</span>Altın Kurallar</h2>
+  <ol class="rules">
+    <li>💾 <strong>Her seans sonunda "JSON Kaydet"</strong> — bu dosya tek gerçek yedeğinizdir.</li>
+    <li>🔢 <strong>Fiyatlara sadece rakam</strong> yazın (<code>120</code>), TL işareti yazmayın.</li>
+    <li>🗑️ <strong>Sayfa silmeden önce</strong> mutlaka JSON kaydedin — sayfa silme geri alınamaz.</li>
+    <li>📺 <strong>Değişiklikten sonra dışa aktarın ve yayınlayın</strong> — dosyalar GitHub'a yüklenmeden TV'ler güncellenmez. Yetkiniz yoksa üç HTML dosyasını sistem yöneticisine gönderin.</li>
+    <li>📅 <strong>Fiyat değiştirince tarihi güncelleyin</strong> — "Bugüne ayarla" butonu tek tık.</li>
+    <li>🖼️ <strong>Fotoğraflar 3 MB'den küçük</strong> olmalı.</li>
+    <li>📄 <strong>TV başına en fazla 6 sayfa</strong> — plan yaparken bunu unutmayın.</li>
+  </ol>
+  <a class="top-link" href="#top">↑ Başa dön</a>
+</section>
+
+</div>
+
+<footer>
+  <span class="logo">EspressoCup</span>
+  Menü Editörü v3.0 · Kullanım Kılavuzu
+</footer>
+
+</body>
+</html>
