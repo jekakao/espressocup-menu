@@ -405,6 +405,57 @@ body {
   letter-spacing: 0.03em;
 }
 
+/* ── Full-image slide — one photo filling the screen ─────────────────────── */
+.fi-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Default: reach past the slide box so the photo covers the top bar and the
+   bottom nav strip. The top bar is static, so the photo simply paints over it.
+   .nav/.pb are fixed with z-index 10 and cannot be out-stacked from inside .ss
+   — .ss is itself fixed, and Chrome makes every fixed element a stacking
+   context — so they are faded out instead whenever a bleed slide is active.
+   Browsers without :has() just keep the bar and strip visible. */
+.fi-wrap.fi-bleed {
+  top: -6.5vh;
+  bottom: -46px;
+}
+
+body:has(.slide.active .fi-bleed) .tb,
+body:has(.slide.active .fi-bleed) .nav,
+body:has(.slide.active .fi-bleed) .pb {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fades in step with the 0.75 s slide crossfade. .pb is left out on purpose —
+   its own rule sets transition:none so the progress width never animates. */
+.tb, .nav { transition: opacity 0.75s ease-in-out; }
+
+.fi-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fi-img.fi-cover   { object-fit: cover; }
+.fi-img.fi-contain { object-fit: contain; }
+
+.fi-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vw;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  background: linear-gradient(135deg, var(--panel), color-mix(in srgb, var(--border) 40%, var(--panel)));
+}
+
 /* Signature badge — shown when item.isFeatured === true on featured-single */
 .fb-tag {
   position: absolute;
@@ -819,14 +870,14 @@ body {
     <div class="ig">
       <div class="ic">
         <div class="sh3"><span></span><span>S · 250ml</span><span>M · 350ml</span><span>L · 470ml</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Espresso</span></div><span class="ip">110</span><span class="ip">120</span><span class="ip np">—</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Americano</span></div><span class="ip">120</span><span class="ip">130</span><span class="ip">140</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Espresso Macchiato</span></div><span class="ip">130</span><span class="ip">140</span><span class="ip np">—</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Cappuccino</span></div><span class="ip">150</span><span class="ip">160</span><span class="ip">170</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Latte</span></div><span class="ip">150</span><span class="ip">160</span><span class="ip">170</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Espresso</span><span class="inn">Yoğun Espresso</span></div><span class="ip">120</span><span class="ip">140</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Americano</span><span class="inn">Espresso + Sıcak Su</span></div><span class="ip">130</span><span class="ip">140</span><span class="ip">150</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Espresso Macchiato</span><span class="inn">Espresso + Süt Köpüğü</span></div><span class="ip">130</span><span class="ip">140</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Cappuccino</span><span class="inn">Espresso + Süt Köpüğü</span></div><span class="ip">150</span><span class="ip">160</span><span class="ip">170</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Latte</span><span class="inn">Espresso + Süt</span></div><span class="ip">150</span><span class="ip">160</span><span class="ip">170</span></div>
         <div class="r3"><div class="in-cell"><span class="in">Flat White</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip np">—</span></div>
         <div class="r3"><div class="in-cell"><span class="in best">Mocha</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">White Mocha</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">White Mocha <span class="new-badge">NEW</span></span><span class="inn">kahve süt beyaz çikolata</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
         <div class="r3"><div class="in-cell"><span class="in best">White Mocha Caramel</span></div><span class="ip">190</span><span class="ip">200</span><span class="ip">210</span></div>
         <div class="r3"><div class="in-cell"><span class="in best">Caramel Macchiato</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
         <div class="r3"><div class="in-cell"><span class="in best">Caramel Latte</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
@@ -835,11 +886,11 @@ body {
         <div class="r3"><div class="in-cell"><span class="in best">Coconut Latte</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip">190</span></div>
         <div class="r3"><div class="in-cell"><span class="in best">Latte Nut</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip">190</span></div>
         <div class="r3"><div class="in-cell"><span class="in best">Cookie Latte</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Chai Tea Latte</span></div><span class="ip">160</span><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Frappuccino</span></div><span class="ip np">—</span><span class="ip">210</span><span class="ip">230</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Filtre Kahve</span><span class="inn">Günlük taze öğütülmüş</span></div><span class="ip">120</span><span class="ip">130</span><span class="ip">140</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Fredo</span></div><span class="ip np">—</span><span class="ip">225</span><span class="ip">250</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Türk Kahvesi</span><span class="inn">Klasik, Menengiç, Dibek</span></div><span class="ip">110</span><span class="ip">130</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Chai Tea Latte</span><span class="inn">sütlü çay</span></div><span class="ip">160</span><span class="ip">170</span><span class="ip">180</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Frappuccino</span></div><span class="ip np">—</span><span class="ip">210</span><span class="ip">230</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Filtre Kahve</span><span class="inn">Günlük taze öğütülmüş</span></div><span class="ip">130</span><span class="ip">140</span><span class="ip">150</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Fredo</span><span class="inn">4 shot espresso buz</span></div><span class="ip np">—</span><span class="ip">225</span><span class="ip">250</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Türk Kahvesi</span></div><span class="ip">110</span><span class="ip">130</span><span class="ip np">—</span></div>
         
       </div>
     </div>
@@ -864,7 +915,7 @@ body {
     <div class="si">
       <div class="si-left">
         <div class="si-n">Hot Chocolate</div>
-        <div class="si-d">Sütlü sıcak çikolata</div>
+        <div class="si-d">Sıcak çikolata · kremalı</div>
       </div>
       <div class="si-p">160 · 170 · 180 ₺</div>
     </div>
@@ -936,10 +987,10 @@ body {
   <div class="ac">
     <div class="ac-icon">🥛</div>
     <div class="ac-body">
-      <div class="ac-name">Badem / Soya Süt</div>
+      <div class="ac-name">Laktozsuz Süt</div>
       <div class="ac-desc">Bitkisel süt alternatifi ile hazırlanır.</div>
     </div>
-    <div class="ac-price">+30</div>
+    <div class="ac-price">+5</div>
   </div>
     </div>
   </div>
@@ -984,7 +1035,7 @@ body {
 /* ── EspressoCup Slideshow Runtime ──────────────────────────────────────── */
 (function () {
   /* Task 2.15: dwell times embedded as a JS constant (converted to ms) */
-  var DURATIONS = [15000,12000,6000];
+  var DURATIONS = [15000,12000,12000];
 
   var slides       = Array.from(document.querySelectorAll('.slide'));
   var dots         = Array.from(document.querySelectorAll('.nd'));

@@ -405,6 +405,57 @@ body {
   letter-spacing: 0.03em;
 }
 
+/* ── Full-image slide — one photo filling the screen ─────────────────────── */
+.fi-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Default: reach past the slide box so the photo covers the top bar and the
+   bottom nav strip. The top bar is static, so the photo simply paints over it.
+   .nav/.pb are fixed with z-index 10 and cannot be out-stacked from inside .ss
+   — .ss is itself fixed, and Chrome makes every fixed element a stacking
+   context — so they are faded out instead whenever a bleed slide is active.
+   Browsers without :has() just keep the bar and strip visible. */
+.fi-wrap.fi-bleed {
+  top: -6.5vh;
+  bottom: -46px;
+}
+
+body:has(.slide.active .fi-bleed) .tb,
+body:has(.slide.active .fi-bleed) .nav,
+body:has(.slide.active .fi-bleed) .pb {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fades in step with the 0.75 s slide crossfade. .pb is left out on purpose —
+   its own rule sets transition:none so the progress width never animates. */
+.tb, .nav { transition: opacity 0.75s ease-in-out; }
+
+.fi-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fi-img.fi-cover   { object-fit: cover; }
+.fi-img.fi-contain { object-fit: contain; }
+
+.fi-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vw;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  background: linear-gradient(135deg, var(--panel), color-mix(in srgb, var(--border) 40%, var(--panel)));
+}
+
 /* Signature badge — shown when item.isFeatured === true on featured-single */
 .fb-tag {
   position: absolute;
@@ -813,24 +864,27 @@ body {
   <div class="rp">
     <div class="rh">
       <div class="rh-label">MILKSHAKE & FROZEN</div>
-      <div class="rh-title">Milkshake Lezzetler</div>
+      <div class="rh-title">Frozen Lezzetler</div>
       <div class="rh-sub">El yapımı milkshake ve soğuk meyveli içecekler</div>
     </div>
     <div class="ig">
       <div class="ic">
         <div class="sh2"><span></span><span>M · 350ml</span><span>L · 470ml</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Mango Kiwi</span><span class="inn">Mango · kivi aroması</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Magic Pumpkin</span><span class="inn">Balkabağı</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Berry Berry</span><span class="inn">Karışık kırmızı meyveler</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Oreo Cookie Milkshake</span><span class="inn">Oreo parçaları · kremalı vanilya</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Çilekli Milkshake</span><span class="inn">Çilek · süt bazlı</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Orange Mango</span><span class="inn">Portakal · mango · ferahlatıcı</span></div><span class="ip">200</span><span class="ip">210</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Berry Hibiscus <span class="new-badge">NEW</span></span><span class="inn">Hibiscus · kırmızı meyveler</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Cool Lime <span class="new-badge">NEW</span></span><span class="inn">Lime · nane</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Limonata</span><span class="inn">Klasik ev yapımı limonata</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Limonata+</span><span class="inn">Özel tarif · narenciye aroması</span></div><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Dragon Mango <span class="new-badge">NEW</span></span><span class="inn">Ejder meyvesi · mango</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Çilek Mojito <span class="new-badge">NEW</span></span><span class="inn">Çilek · nane · limon</span></div><span class="ip">180</span><span class="ip">190</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Mango Kiwi</span><span class="inn">Mango Püresi · Kivi Püresi</span></div><span class="ip">170</span><span class="ip">180</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Magic Pumpkin</span><span class="inn">Balkabağı · Tarçın · Tatlı Baharat</span></div><span class="ip">170</span><span class="ip">180</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Berry Berry</span><span class="inn">Karışık Kırmızı Meyveler</span></div><span class="ip">170</span><span class="ip">180</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Oreo Cookie Milkshake</span><span class="inn">Oreo Parçaları · Kremalı Vanilyn</span></div><span class="ip">180</span><span class="ip">190</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Çilekli Milkshake</span><span class="inn">Taze Çilek · Süt Bazlı</span></div><span class="ip">180</span><span class="ip">190</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Orange Mango</span><span class="inn">Portakal · Mango · Ferahlatıcı</span></div><span class="ip">200</span><span class="ip">210</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Berry Hibiscus</span><span class="inn">Hibiscus · Kırmızı Meyveler</span></div><span class="ip">200</span><span class="ip">210</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Cool Lime</span><span class="inn">Lime · Taze Nane</span></div><span class="ip">200</span><span class="ip">210</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Limonata</span><span class="inn">Klasik  Limonata</span></div><span class="ip">170</span><span class="ip">180</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Limonata+</span><span class="inn">Özel Tarif · Narenciye Aroması</span></div><span class="ip">190</span><span class="ip">200</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Dragon Mango</span><span class="inn">Ejder Meyvesi · Mango Püresi</span></div><span class="ip">200</span><span class="ip">210</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Çilek Mojito</span><span class="inn">Çilek · Nane · Limon</span></div><span class="ip">200</span><span class="ip">210</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">REDBULL</span></div><span class="ip np">—</span><span class="ip">200</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">SODA / GAZOZ</span></div><span class="ip np">—</span><span class="ip">100</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">SU</span></div><span class="ip np">—</span><span class="ip">30</span></div>
         
       </div>
     </div>
@@ -853,15 +907,18 @@ body {
     <div class="ig">
       <div class="ic">
         <div class="sh1"><span></span><span>Fiyat</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Kurabiye</span></div><span class="ip r">50</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Kruvasan</span></div><span class="ip r">50</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Gofret</span></div><span class="ip r">50</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Kornet Çikolata</span></div><span class="ip r">100</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Çikolatalı Kek</span></div><span class="ip r">75</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Kırmızı Meyveli Kek</span></div><span class="ip r">75</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Gazoz / Soda</span></div><span class="ip r">100</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Redbull</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Su</span></div><span class="ip r">30</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">LİEVİTO 3 PEYNİRLİ HAŞHAŞLI BAGEL <span class="new-badge">NEW</span></span><span class="inn">125 gr</span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">LİEVİTO DANA ROZBİF AÇMA BAGEL <span class="new-badge">NEW</span></span><span class="inn">140 gr</span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">RELLA BERRY HIBISCUS PASTA <span class="new-badge">NEW</span></span><span class="inn">150 GR</span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">RELLA YABAN MERSİNLİ KREPLİ PASTA <span class="new-badge">NEW</span></span><span class="inn">150 GR</span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">RELLA TİRAMÜSU KARE MONO PASTA <span class="new-badge">NEW</span></span><span class="inn">120 gr</span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">FRAMBUAZLI CHEESECAKE <span class="new-badge">NEW</span></span><span class="inn">150 GR</span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">RELLA ANTEP İNCİSİ PASTA <span class="new-badge">NEW</span></span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">FISTIK RÜYASI PASTA</span><span class="inn">120 GR</span></div><span class="ip r">150</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">KURABİYE X   KRUVASAN   X  GOFRET</span></div><span class="ip r">50</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">ÇİKOLATALI KEK</span></div><span class="ip r">75</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">KIRMIZI MEYVELİ KEK</span></div><span class="ip r">75</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">KORNER ÇİKOLATA</span></div><span class="ip r">100</span></div>
         
       </div>
     </div>
