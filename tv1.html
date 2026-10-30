@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <!-- BACKUP URL: https://jekakao.github.io/espressocup-menu/tv1.html -->
+<!-- EspressoCup Editor v3.6 (30.10.2026) -->
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="generator" content="EspressoCup Editor v3.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EspressoCup — TV 1</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap&subset=latin,latin-ext" rel="stylesheet" />
   <style>
 
 /* ── Task 2.1: CSS custom properties ─────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap&subset=latin,latin-ext');
 
 :root {
   --bg:           #1a1008;
@@ -231,7 +233,7 @@ body {
 .r3, .r2, .r1 {
   display: grid;
   align-items: center;
-  padding: 0.45vh 0;
+  padding: calc(0.45vh * var(--fit, 1)) 0;
   border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
 }
 
@@ -250,7 +252,7 @@ body {
 }
 
 .in {
-  font-size: var(--fs-item-name);
+  font-size: calc(var(--fs-item-name) * var(--fit, 1));
   color: var(--cream);
   font-weight: 400;
   white-space: nowrap;
@@ -260,7 +262,7 @@ body {
 
 .inn {
   display: block;
-  font-size: var(--fs-item-note);
+  font-size: calc(var(--fs-item-note) * var(--fit, 1));
   color: var(--muted);
   font-style: italic;
   line-height: 1.3;
@@ -270,7 +272,7 @@ body {
 }
 
 .ip {
-  font-size: var(--fs-price);
+  font-size: calc(var(--fs-price) * var(--fit, 1));
   font-weight: 600;
   color: var(--gold);
   font-variant-numeric: tabular-nums;
@@ -320,7 +322,7 @@ body {
   display: flex;
   align-items: center;
   gap: 3vw;
-  padding: 2.5vh 0;
+  padding: calc(2.5vh * var(--fit, 1) * var(--fit, 1) * var(--fit, 1)) 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -334,13 +336,13 @@ body {
 
 .si-n {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: var(--fs-item-name);
+  font-size: calc(var(--fs-item-name) * var(--fit, 1));
   font-style: italic;
   color: var(--cream);
 }
 
 .si-d {
-  font-size: var(--fs-item-note);
+  font-size: calc(var(--fs-item-note) * var(--fit, 1));
   color: var(--muted);
   font-style: italic;
   line-height: 1.5;
@@ -348,7 +350,7 @@ body {
 
 .si-p {
   flex-shrink: 0;
-  font-size: var(--fs-price);
+  font-size: calc(var(--fs-price) * var(--fit, 1));
   font-weight: 700;
   color: var(--gold);
   white-space: nowrap;
@@ -851,7 +853,7 @@ body:has(.slide.active .fi-bleed) .pb {
 <body>
 <div class="tb">
   <div class="tb-logo">EspressoCup</div>
-  <div class="tb-title">Her yudumda bir hikaye</div>
+  <div class="tb-title">HER YUDUMDA BİR HİKAYE</div>
   <div class="tb-right"><span class="tv-tag">TV 1</span></div>
 </div>
 <div class="ss">
@@ -859,7 +861,7 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">İTALYAN KAHVELER</div>
   </div>
   <div class="rp">
     <div class="rh">
@@ -870,21 +872,21 @@ body:has(.slide.active .fi-bleed) .pb {
     <div class="ig">
       <div class="ic">
         <div class="sh3"><span></span><span>S · 250ml</span><span>M · 350ml</span><span>L · 470ml</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Espresso</span><span class="inn">Yoğun Espresso</span></div><span class="ip">120</span><span class="ip">140</span><span class="ip np">—</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Americano</span><span class="inn">Espresso + Sıcak Su</span></div><span class="ip">130</span><span class="ip">140</span><span class="ip">150</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Espresso Macchiato</span><span class="inn">Espresso + Süt Kreması</span></div><span class="ip">130</span><span class="ip">140</span><span class="ip np">—</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Cappuccino</span><span class="inn">Espresso + Süt Kreması</span></div><span class="ip">150</span><span class="ip">160</span><span class="ip">170</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Latte</span><span class="inn">Espresso + Süt</span></div><span class="ip">150</span><span class="ip">160</span><span class="ip">170</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Flat White</span><span class="inn">2 Shot Espresso + Süt</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip np">—</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Mocha</span><span class="inn">Kahve + Süt + Çikolata Sos</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">White Mocha <span class="new-badge">NEW</span></span><span class="inn">Kahve + Süt + Beyaz Çikolata Sos</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">White Mocha Caramel</span><span class="inn">Kahve + Süt + Beyaz Çikolata + Karamel Sos</span></div><span class="ip">190</span><span class="ip">200</span><span class="ip">210</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Caramel Macchiato</span><span class="inn">Kahve + Süt Köpüğü + Karamel Sos</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Caramel Latte</span><span class="inn">Kahve + Süt + Karamel Sos</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Vanilya Latte</span><span class="inn">Kahve + Süt + Vanilya Aroması</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Lotus Latte</span><span class="inn">Kahve + Süt + Lotus Aroma</span></div><span class="ip">180</span><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Coconut Latte</span><span class="inn">Kahve + Süt + Hindistan Cevizi Aroması</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Latte Nut</span><span class="inn">Kahve + Süt + Fındık Aroması</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip">190</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Espresso</span><span class="inn">Yoğun Espresso</span></div><span class="ip">120 ₺</span><span class="ip">140 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Americano</span><span class="inn">Espresso + Sıcak Su</span></div><span class="ip">130 ₺</span><span class="ip">140 ₺</span><span class="ip">150 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Espresso Macchiato</span><span class="inn">Espresso + Süt Kreması</span></div><span class="ip">130 ₺</span><span class="ip">140 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Cappuccino</span><span class="inn">Espresso + Süt Kreması</span></div><span class="ip">150 ₺</span><span class="ip">160 ₺</span><span class="ip">170 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Latte</span><span class="inn">Espresso + Süt</span></div><span class="ip">150 ₺</span><span class="ip">160 ₺</span><span class="ip">170 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Flat White</span><span class="inn">2 Shot Espresso + Süt</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Mocha</span><span class="inn">Kahve + Süt + Çikolata Sos</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span><span class="ip">200 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">White Mocha <span class="new-badge">NEW</span></span><span class="inn">Kahve + Süt + Beyaz Çikolata Sos</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span><span class="ip">200 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">White Mocha Caramel</span><span class="inn">Kahve + Süt + Beyaz Çikolata + Karamel Sos</span></div><span class="ip">190 ₺</span><span class="ip">200 ₺</span><span class="ip">210 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Caramel Macchiato</span><span class="inn">Kahve + Süt Köpüğü + Karamel Sos</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span><span class="ip">200 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Caramel Latte</span><span class="inn">Kahve + Süt + Karamel Sos</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span><span class="ip">200 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Vanilya Latte</span><span class="inn">Kahve + Süt + Vanilya Aroması</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Lotus Latte</span><span class="inn">Kahve + Süt + Lotus Aroma</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span><span class="ip">200 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Coconut Latte</span><span class="inn">Kahve + Süt + Hindistan Cevizi Aroması</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Latte Nut</span><span class="inn">Kahve + Süt + Fındık Aroması</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
         
       </div>
     </div>
@@ -896,7 +898,7 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">İTALYAN KAHVELER</div>
   </div>
   <div class="rp">
     <div class="rh">
@@ -907,12 +909,12 @@ body:has(.slide.active .fi-bleed) .pb {
     <div class="ig">
       <div class="ic">
         <div class="sh3"><span></span><span>S · 250ml</span><span>M · 350ml</span><span>L · 470ml</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Cookie Latte</span><span class="inn">Kahve +Süt + Kurabiye Aroması</span></div><span class="ip">170</span><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Chai Tea Latte</span><span class="inn">Süt + Chai Tea Aroma</span></div><span class="ip">160</span><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Frappuccino</span><span class="inn">Kahve + Süt + Karamel, Çikolata veya Lotus Sos</span></div><span class="ip np">—</span><span class="ip">210</span><span class="ip">230</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Filtre Kahve</span><span class="inn">Taze Öğütülmüş Kahve</span></div><span class="ip">130</span><span class="ip">140</span><span class="ip">150</span></div>
-        <div class="r3"><div class="in-cell"><span class="in best">Freddo</span><span class="inn">3 Shot Espresso + Buz</span></div><span class="ip np">—</span><span class="ip">225</span><span class="ip">250</span></div>
-        <div class="r3"><div class="in-cell"><span class="in">Türk Kahvesi</span><span class="inn">Geleneksel Türk Kahvesi</span></div><span class="ip">110</span><span class="ip">130</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Cookie Latte</span><span class="inn">Kahve +Süt + Kurabiye Aroması</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Chai Tea Latte</span><span class="inn">Süt + Chai Tea Aroma</span></div><span class="ip">160 ₺</span><span class="ip">170 ₺</span><span class="ip">180 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Frappuccino</span><span class="inn">Kahve + Süt + Karamel, Çikolata veya Lotus Sos</span></div><span class="ip np">—</span><span class="ip">210 ₺</span><span class="ip">230 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Filtre Kahve</span><span class="inn">Taze Öğütülmüş Kahve</span></div><span class="ip">130 ₺</span><span class="ip">140 ₺</span><span class="ip">150 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Freddo</span><span class="inn">3 Shot Espresso + Buz</span></div><span class="ip np">—</span><span class="ip">225 ₺</span><span class="ip">250 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Türk Kahvesi</span><span class="inn">Geleneksel Türk Kahvesi</span></div><span class="ip">110 ₺</span><span class="ip">130 ₺</span><span class="ip np">—</span></div>
         
       </div>
     </div>
@@ -924,68 +926,30 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">ÖZEL SICAK & ÇAY</div>
   </div>
   <div class="rp">
     <div class="rh">
-      <div class="rh-label">HOT SPECIALTY & TEA</div>
+      <div class="rh-label">“SPECİALTY HOT DRİNKS & TEA”.</div>
       <div class="rh-title">Özel Sıcak & Çay</div>
-      <div class="rh-sub">Geleneksel lezzetler ve seçkin çay çeşitleri</div>
+      <div class="rh-sub">İçinizi ısıtacak bitki ve meyve çayları ile geleneksel lezzetler.</div>
     </div>
-    <div class="sg">
-      
-    <div class="si">
-      <div class="si-left">
-        <div class="si-n">Hot Chocolate</div>
-        <div class="si-d">Sıcak Çikolata · Kremalı</div>
+    <div class="ig">
+      <div class="ic">
+        <div class="sh3"><span></span><span>S · 250ml</span><span>M · 350ml</span><span>L · 470ml</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Hot Chocolate</span><span class="inn">Sıcak Çikolata - Kremalı</span></div><span class="ip">160 ₺</span><span class="ip">170 ₺</span><span class="ip">180 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Salep</span><span class="inn">Geleneksel Türk Salep ve Doğal Süt</span></div><span class="ip">160 ₺</span><span class="ip">170 ₺</span><span class="ip">180 ₺</span></div>
+        <div class="r3"><div class="in-cell"><span class="in">Demleme Çay</span><span class="inn">Demlik Çay</span></div><span class="ip np">—</span><span class="ip">100 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Karanfilli Ihlamur <span class="new-badge">NEW</span></span><span class="inn">Ihlamur, elma, karanfil, melisa, pembe karabiber, portakal kabuğu, kuşburnu,</span></div><span class="ip np">—</span><span class="ip">150 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Ananaslı Hibiskus <span class="new-badge">NEW</span></span><span class="inn">Hibiskus, elma, ananas, limon otu, hünnap</span></div><span class="ip np">—</span><span class="ip">150 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Armutlu Elmalı Yeşil Çay <span class="new-badge">NEW</span></span><span class="inn">Yeşil çay, elma, limon otu, armut, doğal aroma</span></div><span class="ip np">—</span><span class="ip">150 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Güllü Naneli Yeşil Çay <span class="new-badge">NEW</span></span><span class="inn">Yeşil çay, elma, nane, Isparta gülü, doğal nane yağları</span></div><span class="ip np">—</span><span class="ip">150 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Ananaslı Portakallı Yeşil Çay <span class="new-badge">NEW</span></span><span class="inn">Yeşil çay, ananas, portakal kabuğu, limon otu, doğal aroma</span></div><span class="ip np">—</span><span class="ip">150 ₺</span><span class="ip np">—</span></div>
+        <div class="r3"><div class="in-cell"><span class="in best">Tarçınlı Bal Kabaklı Seylan Çayı <span class="new-badge">NEW</span></span><span class="inn">Seylan çayı, tarçın, bal kabağı, elma, doğal aroma</span></div><span class="ip np">—</span><span class="ip">150 ₺</span><span class="ip np">—</span></div>
+        
       </div>
-      <div class="si-p">160 · 170 · 180 ₺</div>
     </div>
-    <div class="si">
-      <div class="si-left">
-        <div class="si-n">Salep</div>
-        <div class="si-d">Geleneksel Türk Sahlep</div>
-      </div>
-      <div class="si-p">160 · 170 · 180 ₺</div>
-    </div>
-    <div class="si">
-      <div class="si-left">
-        <div class="si-n">Demleme Çay</div>
-        <div class="si-d">Demlik Çay</div>
-      </div>
-      <div class="si-p">100 ₺</div>
-    </div>
-    <div class="si">
-      <div class="si-left">
-        <div class="si-n best">Karanfilli Ihlamur</div>
-        <div class="si-d">Ihlamur, elma, karanfil, melisa, pembe karabiber, portakal kabuğu, kuşburnu,</div>
-      </div>
-      <div class="si-p">150 ₺</div>
-    </div>
-    <div class="si">
-      <div class="si-left">
-        <div class="si-n best">Ananaslı Hibiskus</div>
-        <div class="si-d">Hibiskus, elma, ananas, limon otu, hünnap</div>
-      </div>
-      <div class="si-p">150 ₺</div>
-    </div>
-    <div class="si">
-      <div class="si-left">
-        <div class="si-n best">Armut ve Elmalı Yeşil Çay</div>
-        <div class="si-d">Yeşil çay, elma, limon otu, armut</div>
-      </div>
-      <div class="si-p">150 ₺</div>
-    </div>
-    <div class="si">
-      <div class="si-left">
-        <div class="si-n best">Güllü Naneli Yeşil Çay</div>
-        <div class="si-d">Yeşil çay, elma, nane, Isparta gülü</div>
-      </div>
-      <div class="si-p">150 ₺</div>
-    </div>
-      
-    </div>
-    <div class="page-date">Fiyatlar: 26.10.2026</div>
+    <div class="page-date">Fiyatlar: 30.10.2026</div>
   </div>
 </div>
 </div>
@@ -993,7 +957,7 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">EKSTRALAR</div>
   </div>
   <div class="rp">
     <div class="rh">
@@ -1009,7 +973,7 @@ body:has(.slide.active .fi-bleed) .pb {
       <div class="ac-name">Bir Shot Espresso</div>
       <div class="ac-desc">İçeceğinize ekstra bir shot espresso ekleyerek daha güçlü bir tat elde edin.</div>
     </div>
-    <div class="ac-price">+60</div>
+    <div class="ac-price">+60 ₺</div>
   </div>
   <div class="ac">
     <div class="ac-icon">🍯</div>
@@ -1017,7 +981,7 @@ body:has(.slide.active .fi-bleed) .pb {
       <div class="ac-name">Aromalı Şuruplar</div>
       <div class="ac-desc">Vanilya, karamel, fındık, çilek ve daha fazlası. Favori aromanızı seçin.</div>
     </div>
-    <div class="ac-price">+30</div>
+    <div class="ac-price">+30 ₺</div>
   </div>
   <div class="ac">
     <div class="ac-icon">🍫</div>
@@ -1025,7 +989,7 @@ body:has(.slide.active .fi-bleed) .pb {
       <div class="ac-name">Ekstra Sos</div>
       <div class="ac-desc">Çikolata, karamel veya lotus sosu. Üzerine ekleyerek lezzeti katlayın.</div>
     </div>
-    <div class="ac-price">+40</div>
+    <div class="ac-price">+40 ₺</div>
   </div>
   <div class="ac">
     <div class="ac-icon"></div>
@@ -1053,6 +1017,27 @@ body:has(.slide.active .fi-bleed) .pb {
 </nav>
 <script>
 
+/* ── v3.3: Auto-fit long lists ─────────────────────────────────────────── */
+(function () {
+  function fitSlides() {
+    document.querySelectorAll('.slide').forEach(function (s) {
+      var c = s.querySelector('.ig, .sg');
+      if (!c) return;
+      var f = 1;
+      s.style.setProperty('--fit', '1');
+      while (c.scrollHeight > c.clientHeight + 1 && f > 0.55) {
+        f = Math.round((f - 0.02) * 1000) / 1000;
+        s.style.setProperty('--fit', String(f));
+      }
+    });
+  }
+  window.__ecFit = fitSlides;
+  fitSlides();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitSlides);
+  window.addEventListener('load', fitSlides);
+  window.addEventListener('resize', fitSlides);
+}());
+
 /* ── v3.0: Auto-fullscreen (FR-78) ──────────────────────────────────────── */
 (function () {
   var fsPrompt = document.getElementById('fs-prompt');
@@ -1079,7 +1064,7 @@ body:has(.slide.active .fi-bleed) .pb {
 /* ── EspressoCup Slideshow Runtime ──────────────────────────────────────── */
 (function () {
   /* Task 2.15: dwell times embedded as a JS constant (converted to ms) */
-  var DURATIONS = [15000,7000,7000,7000];
+  var DURATIONS = [15000,7000,12000,7000];
 
   var slides       = Array.from(document.querySelectorAll('.slide'));
   var dots         = Array.from(document.querySelectorAll('.nd'));

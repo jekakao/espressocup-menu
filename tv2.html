@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <!-- BACKUP URL: https://jekakao.github.io/espressocup-menu/tv2.html -->
+<!-- EspressoCup Editor v3.6 (30.10.2026) -->
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="generator" content="EspressoCup Editor v3.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EspressoCup — TV 2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap&subset=latin,latin-ext" rel="stylesheet" />
   <style>
 
 /* ── Task 2.1: CSS custom properties ─────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap&subset=latin,latin-ext');
 
 :root {
   --bg:           #1a1008;
@@ -231,7 +233,7 @@ body {
 .r3, .r2, .r1 {
   display: grid;
   align-items: center;
-  padding: 0.45vh 0;
+  padding: calc(0.45vh * var(--fit, 1)) 0;
   border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
 }
 
@@ -250,7 +252,7 @@ body {
 }
 
 .in {
-  font-size: var(--fs-item-name);
+  font-size: calc(var(--fs-item-name) * var(--fit, 1));
   color: var(--cream);
   font-weight: 400;
   white-space: nowrap;
@@ -260,7 +262,7 @@ body {
 
 .inn {
   display: block;
-  font-size: var(--fs-item-note);
+  font-size: calc(var(--fs-item-note) * var(--fit, 1));
   color: var(--muted);
   font-style: italic;
   line-height: 1.3;
@@ -270,7 +272,7 @@ body {
 }
 
 .ip {
-  font-size: var(--fs-price);
+  font-size: calc(var(--fs-price) * var(--fit, 1));
   font-weight: 600;
   color: var(--gold);
   font-variant-numeric: tabular-nums;
@@ -320,7 +322,7 @@ body {
   display: flex;
   align-items: center;
   gap: 3vw;
-  padding: 2.5vh 0;
+  padding: calc(2.5vh * var(--fit, 1) * var(--fit, 1) * var(--fit, 1)) 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -334,13 +336,13 @@ body {
 
 .si-n {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: var(--fs-item-name);
+  font-size: calc(var(--fs-item-name) * var(--fit, 1));
   font-style: italic;
   color: var(--cream);
 }
 
 .si-d {
-  font-size: var(--fs-item-note);
+  font-size: calc(var(--fs-item-note) * var(--fit, 1));
   color: var(--muted);
   font-style: italic;
   line-height: 1.5;
@@ -348,7 +350,7 @@ body {
 
 .si-p {
   flex-shrink: 0;
-  font-size: var(--fs-price);
+  font-size: calc(var(--fs-price) * var(--fit, 1));
   font-weight: 700;
   color: var(--gold);
   white-space: nowrap;
@@ -851,7 +853,7 @@ body:has(.slide.active .fi-bleed) .pb {
 <body>
 <div class="tb">
   <div class="tb-logo">EspressoCup</div>
-  <div class="tb-title">Her yudumda bir hikaye</div>
+  <div class="tb-title">HER YUDUMDA BİR HİKAYE</div>
   <div class="tb-right"><span class="tv-tag">TV 2</span></div>
 </div>
 <div class="ss">
@@ -859,32 +861,32 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">FROZENLER</div>
   </div>
   <div class="rp">
     <div class="rh">
       <div class="rh-label">MILKSHAKE & FROZEN</div>
-      <div class="rh-title">Frozen Lezzetler</div>
+      <div class="rh-title">MILKSHAKE & FROZEN</div>
       <div class="rh-sub">El yapımı milkshake ve soğuk meyveli içecekler</div>
     </div>
     <div class="ig">
       <div class="ic">
         <div class="sh2"><span></span><span>M · 350ml</span><span>L · 470ml</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Mango Kiwi</span><span class="inn">Mango Püresi · Kivi Püresi</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Magic Pumpkin</span><span class="inn">Balkabağı · Tarçın · Tatlı Baharat</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Berry Berry</span><span class="inn">Karışık Kırmızı Meyveler</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Oreo Cookie Milkshake</span><span class="inn">Oreo Parçaları · Kremalı Vanilya</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Çilekli Milkshake</span><span class="inn">Taze Çilek · Süt Bazlı</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Orange Mango</span><span class="inn">Portakal · Mango · Ferahlatıcı</span></div><span class="ip">200</span><span class="ip">210</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Berry Hibiscus</span><span class="inn">Hibiscus · Kırmızı Meyveler</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Cool Lime</span><span class="inn">Lime · Taze Nane</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Limonata</span><span class="inn">Klasik  Limonata</span></div><span class="ip">170</span><span class="ip">180</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Limonata+</span><span class="inn">Özel Tarif · Narenciye Aroması</span></div><span class="ip">190</span><span class="ip">200</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Dragon Mango</span><span class="inn">Ejder Meyvesi · Mango Püresi</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">Çilek Mojito</span><span class="inn">Çilek · Nane · Limon</span></div><span class="ip">180</span><span class="ip">190</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">REDBULL</span></div><span class="ip np">—</span><span class="ip">200</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">SODA / GAZOZ</span></div><span class="ip np">—</span><span class="ip">100</span></div>
-        <div class="r2"><div class="in-cell"><span class="in">SU</span></div><span class="ip np">—</span><span class="ip">30</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Mango Kiwi</span><span class="inn">Mango Püresi · Kivi Püresi</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Magic Pumpkin</span><span class="inn">Balkabağı · Tarçın · Tatlı Baharat</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Berry Berry</span><span class="inn">Karışık Kırmızı Meyveler</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Oreo Cookie Milkshake</span><span class="inn">Oreo Parçaları · Kremalı Vanilya</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Çilekli Milkshake</span><span class="inn">Taze Çilek · Süt Bazlı</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Orange Mango</span><span class="inn">Portakal · Mango · Ferahlatıcı</span></div><span class="ip">200 ₺</span><span class="ip">210 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Berry Hibiscus</span><span class="inn">Hibiscus · Kırmızı Meyveler</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Cool Lime</span><span class="inn">Lime · Taze Nane</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Limonata</span><span class="inn">Klasik  Limonata</span></div><span class="ip">170 ₺</span><span class="ip">180 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Limonata+</span><span class="inn">Özel Tarif · Narenciye Aroması</span></div><span class="ip">190 ₺</span><span class="ip">200 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Dragon Mango</span><span class="inn">Ejder Meyvesi · Mango Püresi</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">Çilek Mojito</span><span class="inn">Çilek · Nane · Limon</span></div><span class="ip">180 ₺</span><span class="ip">190 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">REDBULL</span></div><span class="ip np">—</span><span class="ip">200 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">SODA / GAZOZ</span></div><span class="ip np">—</span><span class="ip">100 ₺</span></div>
+        <div class="r2"><div class="in-cell"><span class="in">SU</span></div><span class="ip np">—</span><span class="ip">30 ₺</span></div>
         
       </div>
     </div>
@@ -896,28 +898,28 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">KASA ÖNÜ</div>
   </div>
   <div class="rp">
     <div class="rh">
-      <div class="rh-label">Grab & Go</div>
+      <div class="rh-label">GRAB & GO</div>
       <div class="rh-title">KASA ÖNÜ</div>
       <div class="rh-sub">Granola bite’lar, kurutulmuş meyveler ve tohumlu krakerler, Kahvenizin yanına hafif ve pratik lezzetler.</div>
     </div>
     <div class="ig">
       <div class="ic">
         <div class="sh1"><span></span><span>Fiyat</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Today - Kremalı Gofret (Çikolata ve Fındık Kremalı )</span><span class="inn">Yoğun Kremalı 50 gr</span></div><span class="ip r">50</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Elvan - Tuzlu Kurabiye</span><span class="inn">Hazır Kurabiye 100 gr</span></div><span class="ip r">50</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Today - Kruvasan (Çikolata ve Fındık Kremalı, Çilek Soslu, Tuzlu Peynir Soslu)</span><span class="inn">Dolgulu hazır kruvasan. 40 gr</span></div><span class="ip r">50</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Fiorella - Dubai Çikolatası</span><span class="inn">Tereyağlı Çıtır Kadayıflı ve Antep Fıstık Dolgulu Sütlü Çikolata 200 gr</span></div><span class="ip r">100</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Only the Tip - Mini Kornet Uçları <span class="new-badge">NEW</span></span><span class="inn">Deniz Tuzlu Karamel Dolgulu 120 gr</span></div><span class="ip r">100</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">MOM’S Blueberry & Nuts Granola Bites <span class="new-badge">NEW</span></span><span class="inn">Yaban mersini, badem, ceviz ve fındıklı granola lokmaları. 40 gr</span></div><span class="ip r">75</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">MOM’S Peanut & Cacao Granola Bites <span class="new-badge">NEW</span></span><span class="inn">Elma suyuyla tatlandırılmış, yer fıstıklı ve kakaolu granola lokmaları.40 gr</span></div><span class="ip r">75</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Drybox Freeze Dried Strawberry Slices <span class="new-badge">NEW</span></span><span class="inn">50 gr taze çilekten dondurularak kurutulmuş çıtır dilimler. 5 gr</span></div><span class="ip r">100</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Drybox Freeze Dried Blueberries <span class="new-badge">NEW</span></span><span class="inn">56 gr yaban mersininden dondurularak kurutulmuş çıtır taneler. 7 gr</span></div><span class="ip r">100</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Serenin Mini Kakaolu Küp Bar <span class="new-badge">NEW</span></span><span class="inn">Hurma, fındık ve kakaoyla hazırlanmış mini küp barlar. 40 gr</span></div><span class="ip r">100</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Serenin Tohumlu Krik Krak <span class="new-badge">NEW</span></span><span class="inn">Karabuğday unundan, susam, çörek otu ve keten tohumlu çıtır kraker. 35 gr</span></div><span class="ip r">100</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Today - Kremalı Gofret (Çikolata ve Fındık Kremalı )</span><span class="inn">Yoğun Kremalı 50 gr</span></div><span class="ip r">50 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Elvan - Tuzlu Kurabiye</span><span class="inn">Hazır Kurabiye 100 gr</span></div><span class="ip r">50 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Today - Kruvasan (Çikolata ve Fındık Kremalı, Çilek Soslu, Tuzlu Peynir Soslu)</span><span class="inn">Dolgulu hazır kruvasan. 40 gr</span></div><span class="ip r">50 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Fiorella - Dubai Çikolatası</span><span class="inn">Tereyağlı Çıtır Kadayıflı ve Antep Fıstık Dolgulu Sütlü Çikolata 200 gr</span></div><span class="ip r">100 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Only the Tip - Mini Kornet Uçları <span class="new-badge">NEW</span></span><span class="inn">Deniz Tuzlu Karamel Dolgulu 120 gr</span></div><span class="ip r">100 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">MOM’S Blueberry & Nuts Granola Bites <span class="new-badge">NEW</span></span><span class="inn">Yaban mersini, badem, ceviz ve fındıklı granola lokmaları. 40 gr</span></div><span class="ip r">80 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">MOM’S Peanut & Cacao Granola Bites <span class="new-badge">NEW</span></span><span class="inn">Elma suyuyla tatlandırılmış, yer fıstıklı ve kakaolu granola lokmaları.40 gr</span></div><span class="ip r">80 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Drybox Freeze Dried Strawberry Slices <span class="new-badge">NEW</span></span><span class="inn">50 gr taze çilekten dondurularak kurutulmuş çıtır dilimler. 5 gr</span></div><span class="ip r">80 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Drybox Freeze Dried Blueberries <span class="new-badge">NEW</span></span><span class="inn">56 gr yaban mersininden dondurularak kurutulmuş çıtır taneler. 7 gr</span></div><span class="ip r">80 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Serenin Mini Kakaolu Küp Bar <span class="new-badge">NEW</span></span><span class="inn">Hurma, fındık ve kakaoyla hazırlanmış mini küp barlar. 40 gr</span></div><span class="ip r">80 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Serenin Tohumlu Krik Krak <span class="new-badge">NEW</span></span><span class="inn">Karabuğday unundan, susam, çörek otu ve keten tohumlu çıtır kraker. 35 gr</span></div><span class="ip r">80 ₺</span></div>
         
       </div>
     </div>
@@ -943,6 +945,27 @@ body:has(.slide.active .fi-bleed) .pb {
   <div class="nd"></div>
 </nav>
 <script>
+
+/* ── v3.3: Auto-fit long lists ─────────────────────────────────────────── */
+(function () {
+  function fitSlides() {
+    document.querySelectorAll('.slide').forEach(function (s) {
+      var c = s.querySelector('.ig, .sg');
+      if (!c) return;
+      var f = 1;
+      s.style.setProperty('--fit', '1');
+      while (c.scrollHeight > c.clientHeight + 1 && f > 0.55) {
+        f = Math.round((f - 0.02) * 1000) / 1000;
+        s.style.setProperty('--fit', String(f));
+      }
+    });
+  }
+  window.__ecFit = fitSlides;
+  fitSlides();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitSlides);
+  window.addEventListener('load', fitSlides);
+  window.addEventListener('resize', fitSlides);
+}());
 
 /* ── v3.0: Auto-fullscreen (FR-78) ──────────────────────────────────────── */
 (function () {

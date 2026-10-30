@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <!-- BACKUP URL: https://jekakao.github.io/espressocup-menu/tv3.html -->
+<!-- EspressoCup Editor v3.6 (30.10.2026) -->
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="generator" content="EspressoCup Editor v3.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EspressoCup — TV 3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap&subset=latin,latin-ext" rel="stylesheet" />
   <style>
 
 /* ── Task 2.1: CSS custom properties ─────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;600&display=swap&subset=latin,latin-ext');
 
 :root {
   --bg:           #1a1008;
@@ -231,7 +233,7 @@ body {
 .r3, .r2, .r1 {
   display: grid;
   align-items: center;
-  padding: 0.45vh 0;
+  padding: calc(0.45vh * var(--fit, 1)) 0;
   border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
 }
 
@@ -250,7 +252,7 @@ body {
 }
 
 .in {
-  font-size: var(--fs-item-name);
+  font-size: calc(var(--fs-item-name) * var(--fit, 1));
   color: var(--cream);
   font-weight: 400;
   white-space: nowrap;
@@ -260,7 +262,7 @@ body {
 
 .inn {
   display: block;
-  font-size: var(--fs-item-note);
+  font-size: calc(var(--fs-item-note) * var(--fit, 1));
   color: var(--muted);
   font-style: italic;
   line-height: 1.3;
@@ -270,7 +272,7 @@ body {
 }
 
 .ip {
-  font-size: var(--fs-price);
+  font-size: calc(var(--fs-price) * var(--fit, 1));
   font-weight: 600;
   color: var(--gold);
   font-variant-numeric: tabular-nums;
@@ -320,7 +322,7 @@ body {
   display: flex;
   align-items: center;
   gap: 3vw;
-  padding: 2.5vh 0;
+  padding: calc(2.5vh * var(--fit, 1) * var(--fit, 1) * var(--fit, 1)) 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -334,13 +336,13 @@ body {
 
 .si-n {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: var(--fs-item-name);
+  font-size: calc(var(--fs-item-name) * var(--fit, 1));
   font-style: italic;
   color: var(--cream);
 }
 
 .si-d {
-  font-size: var(--fs-item-note);
+  font-size: calc(var(--fs-item-note) * var(--fit, 1));
   color: var(--muted);
   font-style: italic;
   line-height: 1.5;
@@ -348,7 +350,7 @@ body {
 
 .si-p {
   flex-shrink: 0;
-  font-size: var(--fs-price);
+  font-size: calc(var(--fs-price) * var(--fit, 1));
   font-weight: 700;
   color: var(--gold);
   white-space: nowrap;
@@ -851,7 +853,7 @@ body:has(.slide.active .fi-bleed) .pb {
 <body>
 <div class="tb">
   <div class="tb-logo">EspressoCup</div>
-  <div class="tb-title">Her yudumda bir hikaye</div>
+  <div class="tb-title">HER YUDUMDA BİR HİKAYE</div>
   <div class="tb-right"><span class="tv-tag">TV 3</span></div>
 </div>
 <div class="ss">
@@ -859,7 +861,7 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">KİLOLUK KAHVELER</div>
   </div>
   <div class="rp">
     <div class="rh">
@@ -870,16 +872,16 @@ body:has(.slide.active .fi-bleed) .pb {
     <div class="ig">
       <div class="ic">
         <div class="sh1"><span></span><span>Fiyat</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Brasilia Kahve Çekirdeği</span><span class="inn">Espresso için. 1000g</span></div><span class="ip r">1800</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Brasilia Kahve Çekirdeği</span><span class="inn">Espresso için. 500g</span></div><span class="ip r">900</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Oro Cream Kahve Çekirdeği</span><span class="inn">Espresso için. 1000g</span></div><span class="ip r">1500</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Oro Cream Kahve Çekirdeği</span><span class="inn">Espresso için. 500g</span></div><span class="ip r">750</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Altın Telve - Geleneksel Türk Kahvesi</span><span class="inn">Taş Değirmeninde Öğütülmüş. 1000 gr</span></div><span class="ip r">800</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Altın Telve - Geleneksel Türk Kahvesi</span><span class="inn">Taş Değirmeninde Öğütülmüş. 500 gr</span></div><span class="ip r">400</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Minnettar - Dibek Kahvesi</span><span class="inn">Kahveli, Meyveli ve Aromalı. 1000 gr</span></div><span class="ip r">800</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Minnettar - Menengiç Kahvesi</span><span class="inn">Menengiçli, Kahve Kremalı. 1000 gr</span></div><span class="ip r">800</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Cooker - Termos900 ml</span><span class="inn">Bardak Termos 350 ml</span></div><span class="ip r">1000</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Tyeso - Vacuum Insulated Tumbler</span><span class="inn">Çift Duvarlı, Vakumlu  Termos. 900 ml</span></div><span class="ip r">1500</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Brasilia Kahve Çekirdeği</span><span class="inn">Espresso için. 1000g</span></div><span class="ip r">1800 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Brasilia Kahve Çekirdeği</span><span class="inn">Espresso için. 500g</span></div><span class="ip r">900 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Oro Cream Kahve Çekirdeği</span><span class="inn">Espresso için. 1000g</span></div><span class="ip r">1500 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Caffe Veronesi - Oro Cream Kahve Çekirdeği</span><span class="inn">Espresso için. 500g</span></div><span class="ip r">750 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Altın Telve - Geleneksel Türk Kahvesi</span><span class="inn">Taş Değirmeninde Öğütülmüş. 1000 gr</span></div><span class="ip r">800 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Altın Telve - Geleneksel Türk Kahvesi</span><span class="inn">Taş Değirmeninde Öğütülmüş. 500 gr</span></div><span class="ip r">400 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Minnettar - Dibek Kahvesi</span><span class="inn">Kahveli, Meyveli ve Aromalı. 1000 gr</span></div><span class="ip r">800 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Minnettar - Menengiç Kahvesi</span><span class="inn">Menengiçli, Kahve Kremalı. 1000 gr</span></div><span class="ip r">800 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Cooker - Termos900 ml</span><span class="inn">Bardak Termos 350 ml</span></div><span class="ip r">1000 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Tyeso - Vacuum Insulated Tumbler</span><span class="inn">Çift Duvarlı, Vakumlu  Termos. 900 ml</span></div><span class="ip r">1500 ₺</span></div>
         
       </div>
     </div>
@@ -891,29 +893,29 @@ body:has(.slide.active .fi-bleed) .pb {
 
 <div style="display:flex;flex:1;overflow:hidden;">
   <div class="lp">
-    <div class="lp-brand">JUST ESPRESSO</div>
+    <div class="lp-brand">ATIŞTIRMALIKLAR</div>
   </div>
   <div class="rp">
     <div class="rh">
       <div class="rh-label">SNACKS</div>
-      <div class="rh-title">Atıştırmalık</div>
+      <div class="rh-title">Atıştırmalıklar</div>
       <div class="rh-sub">“Kahvenize eşlik edecek tatlı ve tuzlu lezzetler.”</div>
     </div>
     <div class="ig">
       <div class="ic">
         <div class="sh1"><span></span><span>Fiyat</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">Dana Jambon Cheddar Sandvic</span><span class="inn">Artizan Dana Jambon + Cheddar + Sos</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">3 PEYNİRLİ HAŞHAŞLI BAGEL</span><span class="inn">Cheddar + Labne + Kaşar Peyniri 125 gr</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">DANA ROZBİF AÇMA BAGEL</span><span class="inn">Dana Rozbif + Kuru Domates + Cheddar + Kaşar Peyniri 140 gr</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">İzmir Fiesta Tulum Sandviç</span><span class="inn">Tulum Peyniri + Kabak + Patlıcan + Pesta Sos</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">ORMAN MEYVELİ HIBISCUS PASTA150 GR Hibiskus +</span><span class="inn">Hibiskus + Orman Meyveleri + Krema 150 GR</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">YABAN MERSİNLİ KREPLİ PASTA</span><span class="inn">Krep Katları + Yaban Mersini + Krema150 GR</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">TİRAMÜSU KARE MONO PASTA</span><span class="inn">Mascarpone + Kahve + Kakao 120 gr</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">FRAMBUAZLI CHEESECAKE</span><span class="inn">Labne + Frambuaz Sos 150 GR</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">ANTEP İNCİSİ PASTA</span><span class="inn">Antep Fıstığı Sos+ Çikolata + Krema</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">FISTIK RÜYASI PASTA</span><span class="inn">Fıstık Kreması + Çikolata + Pandispanya 120 GR</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in">COOKIE PASTA</span><span class="inn">Çikolatalı Kurabiye Katları + Krema</span></div><span class="ip r">200</span></div>
-        <div class="r1"><div class="in-cell"><span class="in best">Today Donut – Kaplamalı Kek  (Kakao Dolgulu Kakao Kaplamalı, Vişne Soslu , Karamel Sos Dolgulu, Muz Aromalı , Çilek Krema Kaplamalı, Bubble Gum - Sakız Aromalı)</span><span class="inn">Kaplamalı hazır kek, bazı çeşitler dolgulu. 35 gr</span></div><span class="ip r">50</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">Dana Jambon Cheddar Sandvic</span><span class="inn">Artizan Dana Jambon + Cheddar + Sos</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">3 PEYNİRLİ HAŞHAŞLI BAGEL</span><span class="inn">Cheddar + Labne + Kaşar Peyniri 125 gr</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">DANA ROZBİF AÇMA BAGEL</span><span class="inn">Dana Rozbif + Kuru Domates + Cheddar + Kaşar Peyniri 140 gr</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">İzmir Fiesta Tulum Sandviç</span><span class="inn">Tulum Peyniri + Kabak + Patlıcan + Pesta Sos</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">ORMAN MEYVELİ HIBISCUS PASTA150 GR Hibiskus +</span><span class="inn">Hibiskus + Orman Meyveleri + Krema 150 GR</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">YABAN MERSİNLİ KREPLİ PASTA</span><span class="inn">Krep Katları + Yaban Mersini + Krema150 GR</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">TİRAMÜSU KARE MONO PASTA</span><span class="inn">Mascarpone + Kahve + Kakao 120 gr</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">FRAMBUAZLI CHEESECAKE</span><span class="inn">Labne + Frambuaz Sos 150 GR</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">ANTEP İNCİSİ PASTA</span><span class="inn">Antep Fıstığı Sos+ Çikolata + Krema</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">FISTIK RÜYASI PASTA</span><span class="inn">Fıstık Kreması + Çikolata + Pandispanya 120 GR</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in">COOKIE PASTA</span><span class="inn">Çikolatalı Kurabiye Katları + Krema</span></div><span class="ip r">200 ₺</span></div>
+        <div class="r1"><div class="in-cell"><span class="in best">Today Donut – Kaplamalı Kek  (Kakao Dolgulu Kakao Kaplamalı, Vişne Soslu , Karamel Sos Dolgulu, Muz Aromalı , Çilek Krema Kaplamalı, Bubble Gum - Sakız Aromalı)</span><span class="inn">Kaplamalı hazır kek, bazı çeşitler dolgulu. 35 gr</span></div><span class="ip r">50 ₺</span></div>
         
       </div>
     </div>
@@ -939,6 +941,27 @@ body:has(.slide.active .fi-bleed) .pb {
   <div class="nd"></div>
 </nav>
 <script>
+
+/* ── v3.3: Auto-fit long lists ─────────────────────────────────────────── */
+(function () {
+  function fitSlides() {
+    document.querySelectorAll('.slide').forEach(function (s) {
+      var c = s.querySelector('.ig, .sg');
+      if (!c) return;
+      var f = 1;
+      s.style.setProperty('--fit', '1');
+      while (c.scrollHeight > c.clientHeight + 1 && f > 0.55) {
+        f = Math.round((f - 0.02) * 1000) / 1000;
+        s.style.setProperty('--fit', String(f));
+      }
+    });
+  }
+  window.__ecFit = fitSlides;
+  fitSlides();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitSlides);
+  window.addEventListener('load', fitSlides);
+  window.addEventListener('resize', fitSlides);
+}());
 
 /* ── v3.0: Auto-fullscreen (FR-78) ──────────────────────────────────────── */
 (function () {
